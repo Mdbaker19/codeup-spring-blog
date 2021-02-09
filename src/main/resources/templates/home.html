@@ -1,0 +1,42 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home page!!</title>
+</head>
+<body>
+    <h1>This is the landing page</h1>
+
+    <h1>My name is matt, i will say hello to you if you click below</h1>
+    <a href="/hello/matt">Get a special hello from me</a>
+
+    <form action="/hello" method="post">
+        <label>
+            Enter your name here
+            <input name="name"/>
+        </label>
+        <button type="submit">Get a greeting from yourself</button>
+    </form>
+
+    <form action="calc" method="post">
+        <label>
+            Enter your operator (add, subtract, divide, multiply)
+            <input name="op"/>
+        </label>
+        <label>
+            Enter num 1
+            <input name="n1"/>
+        </label>
+        <label>
+            Enter num2
+            <input name="n2"/>
+        </label>
+        <button type="submit">get answer</button>
+    </form>
+
+
+</body>
+</html>
