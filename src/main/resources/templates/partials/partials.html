@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+</ul>
+<nav th:fragment="navbar">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Home</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/post">Posts</a></li>
+            <li><a href="/roll-dice">Dice</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
+</nav>
+
+<header th:fragment="header"></header>
+
+
+
+<footer class="page-footer" th:fragment="pageFooter">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer</h5>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">About and other</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="">Will Have Info Here</a></li>
+                    <li><a class="grey-text text-lighten-3" href="">Will Have Info Here</a></li>
+                    <li><a class="grey-text text-lighten-3" href="">Will Have Info Here</a></li>
+                    <li><a class="grey-text text-lighten-3" href="">Will Have Info Here</a></li>
+                    <li><a class="grey-text text-lighten-3" href="">Will Have Info Here</a></li>
+                    <li><a class="grey-text text-lighten-3" href="">Will Have Info Here</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Text
+<!--            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+        </div>
+    </div>
+</footer>
+
+<footer class="page-footer" th:fragment="diceFooter">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Dice Footer</h5>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Choose Guess</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="/roll-dice/1">1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/roll-dice/2">2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/roll-dice/3">3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/roll-dice/4">4</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/roll-dice/5">5</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/roll-dice/6">6</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Text
+            <!--            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

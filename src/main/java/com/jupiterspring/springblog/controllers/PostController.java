@@ -1,31 +1,41 @@
 package com.jupiterspring.springblog.controllers;
+import com.jupiterspring.springblog.model.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PostController {
-    @RequestMapping(path = "/post", method = RequestMethod.GET)
-    @ResponseBody
-    public String plainPost(){
-        return "post index page";
+    Post myPost = new Post(1, "Covid is a lie", "Quit letting this run your life and get back out there. You are an adult");
+    Post myPost2 = new Post(2, "Interaction", "A Lot of what covid is doing is causing more division amongst each other, that is the plan. People just naturally hate each other now, it is a problem");
+
+
+    @GetMapping("/post")
+    public String plainPost(Model model){
+        List<Post> posts = new ArrayList<>();
+        posts.add(myPost);
+        posts.add(myPost2);
+        model.addAttribute("posts", posts);
+        return "posts/index";
     }
 
-    @RequestMapping(path = "/post/{id}", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping("/post/{id}")
     public String plainPost(@PathVariable int id){
-        return "view an individual post for id " + id;
+
+        return "";
     }
 
-    @RequestMapping(path = "/post/create", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping("/post/create")
     public String createForm(){
-        return "view form for creating a post";
+        return "";
     }
 
-    @RequestMapping(path = "/post/create", method = RequestMethod.POST)
-    @ResponseBody
+    @PostMapping("/post/create")
     public String createPost(){
-        return "Create a new post";
+        return "";
     }
 
 }
