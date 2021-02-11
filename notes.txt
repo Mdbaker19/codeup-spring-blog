@@ -1,0 +1,9 @@
+connect a sql database and configure
+
+go to resources folder in the application
+
+get snippet from curriculum
+
+change as needed
+
+example properties is the code snippet
