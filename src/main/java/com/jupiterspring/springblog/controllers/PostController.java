@@ -9,8 +9,10 @@ import java.util.List;
 
 @Controller
 public class PostController {
-    Post myPost = new Post(1, "Covid is a lie", "Quit letting this run your life and get back out there. You are an adult");
-    Post myPost2 = new Post(2, "Interaction", "A Lot of what covid is doing is causing more division amongst each other, that is the plan. People just naturally hate each other now, it is a problem");
+    Post myPost = new Post(1, "Covid is a lie", "Quit letting this run your life and get back out there. The government does not always know what is best");
+    Post myPost2 = new Post(2, "Interaction", "Covid has reduced interaction with others, it is having a real impact on mental health");
+    Post myPost3 = new Post(3, "President Trump", "Trump won the election");
+
 
 
     @GetMapping("/post")
@@ -18,7 +20,9 @@ public class PostController {
         List<Post> posts = new ArrayList<>();
         posts.add(myPost);
         posts.add(myPost2);
+        posts.add(myPost3);
         model.addAttribute("posts", posts);
+        model.addAttribute("title", "All Posts");
         return "posts/index";
     }
 
