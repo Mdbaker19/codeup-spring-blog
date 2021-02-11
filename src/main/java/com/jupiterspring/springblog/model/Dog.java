@@ -1,7 +1,5 @@
 package com.jupiterspring.springblog.model;
 
-import jdk.jfr.Unsigned;
-
 import javax.persistence.*;
 
 @Entity
