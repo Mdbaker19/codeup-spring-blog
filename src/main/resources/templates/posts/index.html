@@ -15,9 +15,9 @@
                     <p th:text="${post.body}"></p>
                 </div>
                 <div class="card-action">
-                    <a th:href="@{/post/{id}(id=${post.id})}"><button class="waves-effect waves-light btn">See More</button></a>
+                    <h3 th:text="${post.author}"></h3>
                     <p th:text="${post.date.toString().substring(0, 11)}"></p>
-                    <p th:text="${post.author}"></p>
+                    <a th:href="@{/post/{id}(id=${post.id})}"><button class="waves-effect waves-light btn">See More</button></a>
                 </div>
             </div>
         </div>

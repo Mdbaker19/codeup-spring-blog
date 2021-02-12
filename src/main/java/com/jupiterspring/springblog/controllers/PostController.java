@@ -1,6 +1,7 @@
 package com.jupiterspring.springblog.controllers;
 import com.jupiterspring.springblog.model.Post;
 import com.jupiterspring.springblog.repositories.PostRepository;
+import com.jupiterspring.springblog.util.Methods;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 public class PostController {
 
     private final PostRepository postDao;
+    Methods m = new Methods();
 
     public PostController(PostRepository postDao){
         this.postDao = postDao;
@@ -43,7 +45,7 @@ public class PostController {
     public String createPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, @RequestParam(name = "author") String author, Model model){
         Post newPost = new Post();
         newPost.setDate(new Date());
-        newPost.setAuthor(author);
+        newPost.setAuthor(m.cap(author));
         newPost.setBody(body);
         newPost.setTitle(title);
         postDao.save(newPost);
@@ -54,10 +56,29 @@ public class PostController {
     }
 
     @GetMapping("/post/delete/{id}")
-    public String deletePost(@PathVariable long id){
+    public String deletePost(Model model, @PathVariable long id){
         Post thisPost = postDao.getOne(id);
         postDao.delete(thisPost);
-        return "posts/index";
+        return allPosts(model);
+    }
+
+    @GetMapping("/post/edit/{id}")
+    public String editForm(Model model, @PathVariable long id){
+        Post currentPost = postDao.getOne(id);
+        model.addAttribute("title", "Edit this Post");
+        model.addAttribute("post", currentPost);
+        return "posts/edit";
+    }
+
+    @PostMapping("/post/edit")
+    public String editThePost(Model model, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body, @RequestParam(name = "author") String author, @RequestParam(name = "currId") long id){
+        Post currPost = postDao.getOne(id);
+        currPost.setTitle(title);
+        currPost.setBody(body);
+        currPost.setAuthor(m.cap(author));
+        currPost.setDate(new Date());
+        postDao.save(currPost);
+        return allPosts(model);
     }
 
 }

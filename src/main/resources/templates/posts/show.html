@@ -16,9 +16,10 @@
                             <p th:text="${myPost.body}"></p>
                         </div>
                         <div class="card-action">
-                            <button th:replace="partials/partials.html :: deleteModal">Delete</button>
+                            <h3 th:text="${myPost.author}"></h3>
                             <p th:text="${myPost.date.toString().substring(0, 11)}"></p>
-                            <p th:text="${myPost.author}"></p>
+                            <button th:replace="partials/partials.html :: deleteModal">Delete</button>
+                            <a th:href="@{/post/edit/{id}(id=${myPost.id})}">Edit</a>
                         </div>
                     </div>
                 </div>
