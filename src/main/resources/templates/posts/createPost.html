@@ -5,31 +5,25 @@
 <body>
 <main>
     <header th:include="partials/partials.html :: header"></header>
+    <h1 style="text-align: center">Create Post</h1>
 
-
-    <div class="row" id="formContainer">
-    <form class="col s12" id="createForm" action="/post/create" method="POST">
-        <div class="row">
-            <div class="input-field col s6">
-                <input name="author" id="author" type="text" class="validate">
-                <label for="author">Author Name</label>
+    <div class="container" id="formContainer">
+        <form id="createForm" action="/post/create" method="POST">
+            <div class="input-field">
+                <input name="author" id="author" type="text" class="validate customInput">
+                <label for="author" class="formLabel">Author Name</label>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input name="title" id="title" type="text" class="validate">
-                <label for="title">Title</label>
+            <div class="input-field">
+                <input name="title" id="title" type="text" class="validate customInput">
+                <label for="title" class="formLabel">Title</label>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input name="body" id="body" type="text" class="validate">
-                <label for="body">Body</label>
+            <div class="input-field">
+                <input name="body" id="body" type="text" class="validate customInput">
+                <label for="body" class="formLabel">Body</label>
             </div>
-        </div>
-        <button>Submit</button>
-    </form>
-</div>
+            <button>Submit</button>
+        </form>
+    </div>
 </main>
 <div th:replace="partials/partials.html :: scripts"></div>
 

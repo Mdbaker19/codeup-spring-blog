@@ -13,7 +13,7 @@ public class Post {
     @Column(nullable = false, unique = true)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String body;
 
     @Column(nullable = false)

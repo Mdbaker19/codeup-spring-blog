@@ -55,19 +55,20 @@ public class PostController {
         return "posts/show";
     }
 
+    @GetMapping("/post/search/{searchValue}")
+    public String searchPost(@PathVariable String searchValue, Model model){
+        System.out.println(searchValue);
+        Post post = postDao.findPostByTitle(searchValue);
+        model.addAttribute("myPost", post);
+        model.addAttribute("title", "Viewing Searched Post");
+        return "posts/show";
+    }
+
     @GetMapping("/post/delete/{id}")
     public String deletePost(Model model, @PathVariable long id){
         Post thisPost = postDao.getOne(id);
         postDao.delete(thisPost);
         return allPosts(model);
-    }
-
-    @GetMapping("/post/edit/{id}")
-    public String editForm(Model model, @PathVariable long id){
-        Post currentPost = postDao.getOne(id);
-        model.addAttribute("title", "Edit this Post");
-        model.addAttribute("post", currentPost);
-        return "posts/edit";
     }
 
     @PostMapping("/post/edit")

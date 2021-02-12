@@ -5,28 +5,45 @@
 }
 
 body{
-    background-color: #434242;
+    background-color: #cad5ca;
+    color: #eca72c;
 }
-
+nav{
+    background-color: #005e7c !important;
+    color: #211a1d !important;
+}
 main{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-bottom: 15px;
 }
-
-#foot{
-
+.deleteButton{
+    background: none !important;
+    border: none !important;
+    color: #eca72c !important;
+}
+.activator:hover{
+    cursor: pointer !important;
+}
+footer{
+    background-color: #211a1d !important;
+    color: #cad5ca !important;
 }
 #formContainer{
     height: 85vh;
 }
 #createForm{
-    border: 3px solid black;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: -3px 3px #333232;
+}
+#edit{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 #searchBar{
     margin-left: 70px !important;
@@ -35,4 +52,34 @@ main{
 .card-action{
     display: flex;
     justify-content: space-around;
+}
+.formLabel{
+    text-align: center !important;
+    font-size: 20px !important;
+}
+.formLabelEdit{
+    font-size: 20px !important;
+}
+.customInput{
+    padding: 10px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.formHolder{
+    height: 100% !important;
+}
+#formGrow{
+    height: auto;
+    max-width: 730px !important;
+}
+.textBody{
+    height: 60%;
+    width: 100%;
+}
+#editForm{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
