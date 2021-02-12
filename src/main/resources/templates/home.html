@@ -2,65 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="partials/partials.html :: styleHead"><title>Home</title></head>
 <body>
+<main>
+    <header th:include="partials/partials.html :: header"></header>
 
-<nav>
-    <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Logo</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
-        </ul>
-    </div>
-</nav>
-
-<ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
-</ul>
 
     <h1>My name is Matt, this is a blog</h1>
 
-    <form action="calc" method="post">
-        <label>
-            Enter your operator (add, subtract, divide, multiply)
-            <input name="op"/>
-        </label>
-        <label>
-            Enter num 1
-            <input name="n1"/>
-        </label>
-        <label>
-            Enter num2
-            <input name="n2"/>
-        </label>
-        <button type="submit">Answer</button>
-    </form>
-
-<!-- Dropdown Trigger -->
-<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-
-<!-- Dropdown Structure -->
-<ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider" tabindex="-1"></li>
-    <li><a href="#!">three</a></li>
-    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-</ul>
-
-
-
-
+</main>
 
 <footer th:include="partials/partials.html :: pageFooter"></footer>
 <div th:replace="partials/partials.html :: scripts"></div>
-
 
 </body>
 </html>

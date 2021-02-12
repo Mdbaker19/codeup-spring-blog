@@ -7,16 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" th:href="@{/../static/styles/global.css}">
+    <link rel="stylesheet" th:href="@{/styles/global.css}">
     <title th:text="${title}"></title>
 </head>
 <body>
 
-<header th:fragment="header"></header>
+<header th:fragment="header">
+    <nav th:fragment="navbar">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo"><i class="material-icons">extension</i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/post">See All posts</a></li>
+                <li><a href="/post/create">Create Post</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo" th:fragment="navList">
+        <li><a href="/post">See All posts</a></li>
+        <li><a href="/post/create">Create Post</a></li>
+    </ul>
+
+</header>
 
 
 
-<footer class="page-footer" th:fragment="pageFooter">
+<footer class="page-footer" id="foot" th:fragment="pageFooter">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -43,10 +60,7 @@
 <footer class="page-footer" th:fragment="diceFooter">
     <div class="container">
         <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Dice Footer</h5>
-            </div>
-            <div class="col l4 offset-l2 s12">
+            <div class="col l8 offset-l2 s12">
                 <h5 class="white-text">Choose Guess</h5>
                 <ul>
                     <li><a class="grey-text text-lighten-3" href="/roll-dice/1">1</a></li>
@@ -59,24 +73,17 @@
             </div>
         </div>
     </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2014 Copyright Text
-            <!--            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
-        </div>
-    </div>
 </footer>
 
 
 <div th:fragment="scripts" th:remove="tag">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-    <script th:fragment="materializeScript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script th:fragment="custom">
+    <script>
         $(document).ready(function (){
             $(".sidenav").sidenav();
-            $(".dropdown-trigger").dropdown();
         });
     </script>
 </div>
