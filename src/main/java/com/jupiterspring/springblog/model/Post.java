@@ -16,7 +16,7 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
-    @Column(columnDefinition = "varchar(100) default 'Unknown'")
+    @Column(nullable = false)
     private String author;
 
     @Column(nullable = false)
@@ -62,5 +62,13 @@ public class Post {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -5,16 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Controller
 public class PostController {
-    Post myPost = new Post(1, "Matt", "Covid is a lie", "Quit letting this run your life and get back out there. The government does not always know what is best", new Date(1999-12-12));
-    Post myPost2 = new Post(2, "Matt", "Interaction", "Covid has reduced interaction with others, it is having a real impact on mental health", new Date(1999-12-12));
-    Post myPost3 = new Post(3, "Matt", "President Trump", "Trump won the election", new Date(1999-12-12));
-
 
     private final PostRepository postDao;
 
@@ -22,36 +17,46 @@ public class PostController {
         this.postDao = postDao;
     }
 
-
     @GetMapping("/post")
-    public String plainPost(Model model){
-        List<Post> posts = new ArrayList<>();
-        posts.add(myPost);
-        posts.add(myPost2);
-        posts.add(myPost3);
+    public String allPosts(Model model){
+        List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
         model.addAttribute("title", "All Posts");
         return "posts/index";
     }
 
     @GetMapping("/post/{id}")
-    public String plainPost(@PathVariable long id, Model model){
+    public String getOne(@PathVariable long id, Model model){
         Post myPost = postDao.getOne(id);
         model.addAttribute("myPost", myPost);
-        return "";
+        model.addAttribute("title", "This Post");
+        return "posts/show";
     }
 
     @GetMapping("/post/create")
-    public String createForm(){
-
+    public String createForm(Model model){
+        model.addAttribute("title", "Create Your Post");
         return "posts/createPost";
     }
 
     @PostMapping("/post/create")
-    public String createPost(){
-//        Post post = new Post();
-//
-//        postDao.save(post);
+    public String createPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, @RequestParam(name = "author") String author, Model model){
+        Post newPost = new Post();
+        newPost.setDate(new Date());
+        newPost.setAuthor(author);
+        newPost.setBody(body);
+        newPost.setTitle(title);
+        postDao.save(newPost);
+        Post myPost = postDao.getOne(newPost.getId());
+        model.addAttribute("myPost", myPost);
+        model.addAttribute("title", "This Post");
+        return "posts/show";
+    }
+
+    @GetMapping("/post/delete/{id}")
+    public String deletePost(@PathVariable long id){
+        Post thisPost = postDao.getOne(id);
+        postDao.delete(thisPost);
         return "posts/index";
     }
 
