@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,18 @@ public class PostController {
 
     public PostController(PostRepository postDao){
         this.postDao = postDao;
+    }
+
+    @GetMapping("")
+    public String topPosts(Model model){
+        List<Post> all = postDao.findAll();
+        List<Post> top = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
+            top.add(all.get(i));
+        }
+        model.addAttribute("posts", top);
+        model.addAttribute("title", "Home Page");
+        return "home";
     }
 
     @GetMapping("/post")
