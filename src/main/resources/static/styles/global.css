@@ -16,7 +16,6 @@ main{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-bottom: 15px;
 }
 .deleteButton{
     background: none !important;
@@ -82,4 +81,10 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+#bottomHalfImageMain{
+    bottom: 300px !important;
+}
+.mainSection{
+    height: 50vh;
 }
