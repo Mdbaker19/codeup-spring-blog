@@ -5,12 +5,12 @@
 }
 
 body{
-    background-color: #cad5ca;
-    color: #eca72c;
+    background-color: #fefae0;
+    color: #283618;
 }
 nav{
-    background-color: #005e7c !important;
-    color: #211a1d !important;
+    background-color: #283618 !important;
+    color: #fefae0 !important;
 }
 main{
     min-height: 100vh;
@@ -20,14 +20,14 @@ main{
 .deleteButton{
     background: none !important;
     border: none !important;
-    color: #eca72c !important;
+    color: #dda15e !important;
 }
 .activator:hover{
     cursor: pointer !important;
 }
 footer{
-    background-color: #211a1d !important;
-    color: #cad5ca !important;
+    background-color: #bc6c25 !important;
+    color: #fefae0 !important;
 }
 #formContainer{
     height: 85vh;
@@ -84,7 +84,4 @@ footer{
 }
 #bottomHalfImageMain{
     bottom: 300px !important;
-}
-.mainSection{
-    height: 50vh;
 }

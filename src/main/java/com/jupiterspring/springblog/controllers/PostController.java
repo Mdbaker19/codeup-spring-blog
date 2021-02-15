@@ -24,7 +24,7 @@ public class PostController {
     public String topPosts(Model model){
         List<Post> all = postDao.findAll();
         List<Post> top = new ArrayList<>();
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 3; i++){
             top.add(all.get(i));
         }
         model.addAttribute("posts", top);
