@@ -10,6 +10,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "int(11) unsigned")
     private long id;
 
     @Column(nullable = false, unique = true)
@@ -23,6 +24,9 @@ public class Post {
 
     @Column(nullable = false)
     private Date date;
+
+    @OneToOne
+    private User owner;
 
     public Post(){}
 

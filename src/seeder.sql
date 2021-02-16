@@ -1,6 +1,7 @@
 create database if not exists blog_db;
 use blog_db;
-# drop table if exists posts;
+drop table if exists posts;
+drop table if exists users;
 
 insert into posts (author, title, body, date) values ('Libbi', 'middleware', 'Speak vet kibbles heel chow chow stay english mastiff greyhound heel. Speak dog shih tzu vet stand leash, puppies leave it play dead pug yorkshire terrier pomsky. Stand greyhound catch boxer bite, down growl release english mastiff release speak dog toy dog house lab.
 Bite chase tail bell tennis ball dog bowl kibbles paw tug release. Leash tail vet pomsky leash rottweiler puppies, yorkshire terrier dog bone st bernard chow chow. Sit pretty puppies bring it heel collar vet chase tail sit pretty dog house.', '2013/11/5');
@@ -40,12 +41,14 @@ insert into posts (author, title, body, date) values ('Jaime', 'content-based', 
 English mastiff bell great dance poodle dachshund yorkshire terrier play dead dog. Lab chew toy dog house chase tail sit growl collar spin, speak chihuahua rottweiler husky chase tail rottweiler. Poodle pomeranian great dance english mastiff rottweiler bite tennis ball stay squeak toy, poodle dog house leash pit bull.', '2019/5/14');
 
 insert into posts (author, title, body, date) values ('Veronike', 'systematic', 'diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse', '2012/5/14');
+
 insert into posts (author, title, body, date) values ('Gardiner', 'Enhanced', 'morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend', '2017/5/14');
 
 insert into posts (author, title, body, date) values ('Caty', 'even-keeled', 'Stay pit bull vet heel squeak toy great dance chew toy bite. Lap dog kibbles shih tzu greyhound tail peanut butter, come heel boxer bite leave it sit. Spin growl stand Morkie bulldog lap dog chow chow bark dog house. Tail english mastiff kibbles chow chow collar take it dog bone. Bulldog shake shake bark lab catch chihuahua spin, doberman pinscher leap sit pretty chew toy bring it pomeranian.', '2013/5/14');
 
-insert into posts (author, title, body, date) values ('Ginni', 'policy', '
-Leash growl leap chase tail poodle great dance, growl pomsky stand kibbles milk bone husky heel dog toy. Yorkshire terrier jump play dead shih tzu play dead speak, bring it take it beagle speak. Yorkshire terrier english mastiff squeak toy english mastiff, dachshund sit maltese bring it roll over great dance.
+insert into posts (author, title, body, date) values ('Ginni', 'policy', 'Leash growl leap chase tail poodle great dance, growl pomsky stand kibbles milk bone husky heel dog toy. Yorkshire terrier jump play dead shih tzu play dead speak, bring it take it beagle speak. Yorkshire terrier english mastiff squeak toy english mastiff, dachshund sit maltese bring it roll over great dance.
 Doberman pinscher bell rottweiler, speak dachshund paw bring it bark bulldog down catch. St bernard jump chow chow husky collar fetch greyhound. Fetch speak growl husky shih tzu, bark english mastiff dog bone leash shake.', '2013/5/14');
 
 select * from posts;
+
+select * from users;

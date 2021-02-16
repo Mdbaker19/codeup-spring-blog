@@ -2,6 +2,9 @@ package com.jupiterspring.springblog.controllers;
 import com.jupiterspring.springblog.model.Post;
 import com.jupiterspring.springblog.repositories.PostRepository;
 import com.jupiterspring.springblog.util.Methods;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -20,14 +24,27 @@ public class PostController {
         this.postDao = postDao;
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     public String topPosts(Model model){
         List<Post> all = postDao.findAll();
-        List<Post> top = new ArrayList<>();
+        List<Post> top3 = new ArrayList<>();
+        List<Post> bottom3 = new ArrayList<>();
+        List<String> homeImages = new ArrayList<>();
+        homeImages.add("/img/grassPuppy.jpeg");
+        homeImages.add("/img/snowDog.jpeg");
+        homeImages.add("/img/puppy.jpg");
+        homeImages.add("/img/snowHusky.jpeg");
+        homeImages.add("/img/wildHusky.jpeg");
+        homeImages.add("/img/wildPuppy.jpeg");
         for(int i = 0; i < 3; i++){
-            top.add(all.get(i));
+            top3.add(all.get(i));
         }
-        model.addAttribute("posts", top);
+        for(int i = 3; i < 6; i++){
+            bottom3.add(all.get(i));
+        }
+        model.addAttribute("postsTop", top3);
+        model.addAttribute("postsBottom", bottom3);
+        model.addAttribute("imgList", homeImages);
         model.addAttribute("title", "Home Page");
         return "home";
     }
@@ -39,6 +56,8 @@ public class PostController {
         model.addAttribute("title", "All Posts");
         return "posts/index";
     }
+
+
 
     @GetMapping("/post/{id}")
     public String getOne(@PathVariable long id, Model model){
@@ -93,6 +112,12 @@ public class PostController {
         currPost.setDate(new Date());
         postDao.save(currPost);
         return allPosts(model);
+    }
+
+    @GetMapping("/postPage")
+    public String findIt(Model model, @RequestParam Optional<String> letter, @PageableDefault(value = 5, sort = "title", direction = Sort.Direction.ASC) Pageable pageable){
+        model.addAttribute("page", postDao.pageDisplay(letter.orElse(""), pageable));
+        return "posts/pages";
     }
 
 }

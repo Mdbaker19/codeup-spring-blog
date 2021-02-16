@@ -5,7 +5,10 @@
 <header th:include="partials/partials.html :: header"></header>
 
 <main>
-    <h1>Sorry, Error page</h1>
+    <h1>Sorry, Error page. Here is a cute puppy</h1>
+    <div id="errorImage">
+        <img th:src="@{/img/blackWhitePuppy.jpeg}" width="500px" height="500px"/>
+    </div>
 <!--    <th:block th:switch="${error}">-->
 <!--        <div th:case="'Not Found'">-->
 <!--            <h1>Page not found!!</h1>-->
