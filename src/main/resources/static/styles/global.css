@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Newsreader', serif;
 }
 
 body{
@@ -25,8 +26,16 @@ main{
     cursor: pointer !important;
 }
 footer{
-    background-color: #bc6c25 !important;
-    color: #fefae0 !important;
+    background-color: #dda15e !important;
+    color: #bc6c25 !important;
+}
+.moreButton{
+    background: none !important;
+    color: #dda15e !important;
+}
+.flexCenter{
+    display: flex;
+    justify-content: center;
 }
 #formContainer{
     height: 85vh;
@@ -36,6 +45,11 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+#searchButton{
+    height: 28px;
+    line-height: 28px;
+    margin-left: 3%;
 }
 #edit{
     height: 100%;
@@ -83,4 +97,12 @@ footer{
 }
 #bottomHalfImageMain{
     bottom: 300px !important;
+}
+.pagination{
+    width: 55%;
+    display: flex;
+    justify-content: space-around;
+}
+.pagination li a {
+    color: #fefae0 !important;
 }

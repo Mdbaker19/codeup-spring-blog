@@ -11,12 +11,13 @@
             <div class="col s12 formHolder">
                 <div class="card blue-grey darken-1 formHolder">
                     <div class="card-content white-text">
+                        <p th:text="${myPost.date.toString().substring(0, 11)}" class="right"></p>
                         <span class="card-title" th:text="${myPost.title}"></span>
+                        <div class="divider"></div>
                         <p th:text="${myPost.body}"></p>
                     </div>
                     <div class="card-action">
-                        <h3 th:text="${myPost.author}"></h3>
-                        <p th:text="${myPost.date.toString().substring(0, 11)}"></p>
+                        <h4 class="left grey-text" th:text="${myPost.author}"></h4>
                         <button th:replace="partials/partials.html :: deleteModal">Delete</button>
                         <span class="activator" id="revealForm"><i class="material-icons">border_color</i></span>
                     </div>

@@ -54,7 +54,7 @@ public class PostController {
         List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
         model.addAttribute("title", "All Posts");
-        return "posts/index";
+        return "posts/pages";
     }
 
 
@@ -87,11 +87,10 @@ public class PostController {
         return "posts/show";
     }
 
-    @GetMapping("/post/search/{searchValue}")
-    public String searchPost(@PathVariable String searchValue, Model model){
-        System.out.println(searchValue);
-        Post post = postDao.findPostByTitle(searchValue);
-        model.addAttribute("myPost", post);
+    @GetMapping("/post/search")
+    public String searchPost(@RequestParam String searchValue, Model model){
+        List<Post> post = postDao.findPostByTitle(searchValue);
+        model.addAttribute("myPost", post.get(0));
         model.addAttribute("title", "Viewing Searched Post");
         return "posts/show";
     }
@@ -111,12 +110,13 @@ public class PostController {
         currPost.setAuthor(m.cap(author));
         currPost.setDate(new Date());
         postDao.save(currPost);
-        return allPosts(model);
+        return getOne(id, model);
     }
 
     @GetMapping("/postPage")
     public String findIt(Model model, @RequestParam Optional<String> letter, @PageableDefault(value = 5, sort = "title", direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("page", postDao.pageDisplay(letter.orElse(""), pageable));
+        model.addAttribute("title", "Viewing Post Pages");
         return "posts/pages";
     }
 

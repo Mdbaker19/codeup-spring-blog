@@ -1,21 +1,32 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<head th:include="partials/partials.html :: styleHead"></head>
+
+
 <body>
-
-<div class="container">
-    <div th:each="post : ${page}">
-        <h1 th:text="${post.title}"></h1>
-        <p th:text="${post.body}"></p>
+<header th:include="partials/partials.html :: header"></header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col s12" th:each="post : ${page}">
+                <div class="card blue-grey darken-1 hoverable">
+                    <div class="card-content white-text">
+                        <p th:text="${post.date.toString().substring(0, 11)}" class="right"></p>
+                        <span class="card-title center-align" th:text="${post.title}"></span>
+                        <div class="divider"></div>
+                        <p th:text="${post.body}"></p>
+                    </div>
+                    <div class="card-action">
+                        <h4 th:text="${post.author}" class="left grey-text"></h4>
+                        <a th:href="@{/post/{id}(id=${post.id})}"><button class="waves-effect waves-light btn moreButton">See More</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</main>
 
-    <nav class="text-center" style="display: flex">
+    <nav class="flexCenter">
         <ul class="pagination">
             <li th:class="${page.isFirst()}? 'disabled' : ''">
                 <span th:if='${page.isFirst()}'>← First</span>
@@ -67,7 +78,7 @@
             </li>
         </ul>
     </nav>
-</div>
-
+<footer th:include="partials/partials.html :: pageFooter"></footer>
+<div th:replace="partials/partials.html :: scripts"></div>
 </body>
 </html>

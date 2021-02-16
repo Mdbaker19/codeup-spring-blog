@@ -37,6 +37,12 @@ public class Post {
         this.body = b;
         this.date = d;
     }
+    public Post(String a, String t, String b, Date d){
+        this.author = a;
+        this.title = t;
+        this.body = b;
+        this.date = d;
+    }
 
     public String getTitle() {
         return title;

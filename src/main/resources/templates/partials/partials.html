@@ -1,5 +1,6 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+
 <head th:fragment="styleHead">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,33 +8,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/styles/global.css}">
     <title th:text="${title}"></title>
 </head>
-<body>
 
 <header th:fragment="header">
     <nav>
         <div class="nav-wrapper">
             <a href="/" class="brand-logo"><i class="material-icons">extension</i></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-<!--            <label>-->
-<!--                <input placeholder="Search" id="searchBar" type="text" class="validate" name="searchValue">-->
-<!--                <a th:href="@{/post/search/{searchValue}(searchValue=)}"><i class="material-icons">search</i></a>-->
-<!--            </label>-->
             <ul class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn modal-trigger center-align" id="searchButton" href="#searchModal">Search</a></li>
                 <li><a href="/login">Login</a></li>
-                <li><a href="/post">See All posts</a></li>
+                <li><a href="/postPage">See All posts</a></li>
                 <li><a href="/post/create">Create Post</a></li>
             </ul>
         </div>
     </nav>
     <ul class="sidenav" id="mobile-demo">
-<!--        <li><a href="/post/search/{searchValue}"><i class="material-icons">search</i></a></li>-->
+        <li><a class="waves-effect waves-light btn modal-trigger" href="#searchModal">Search</a></li>
         <li><a href="/login">Login</a></li>
-        <li><a href="/post">See All posts</a></li>
+        <li><a href="/postPage">See All posts</a></li>
         <li><a href="/post/create">Create Post</a></li>
     </ul>
+
+    <div id="searchModal" class="modal">
+        <form action="/post/search" method="get">
+            <input type="text" name="searchValue" />
+            <input type="submit">
+        </form>
+    </div>
+
 </header>
 
 
@@ -121,6 +128,3 @@
         });
     </script>
 </div>
-
-</body>
-</html>
