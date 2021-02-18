@@ -6,11 +6,15 @@
 }
 
 body{
-    background-color: #606c38;
+    background-color: #2f3e46 !important;
 }
 nav{
-    background-color: #283618 !important;
-    color: #fefae0 !important;
+    background-color: #84a98c !important;
+    color: #cad2c5 !important;
+}
+.card{
+    background-color: #52796f !important;
+    color: #cad2c5 !important;
 }
 main{
     min-height: 100vh;
@@ -19,19 +23,25 @@ main{
 }
 .deleteButton{
     background: none !important;
+    box-shadow: none !important;
     border: none !important;
-    color: #dda15e !important;
+    color: #354f52 !important;
 }
 .activator:hover{
     cursor: pointer !important;
 }
 footer{
-    background-color: #dda15e !important;
-    color: #bc6c25 !important;
+    background-color: #354f52 !important;
+    color: #2f3e46 !important;
+}
+a{
+    color: #2f3e46 !important;
 }
 .moreButton{
     background: none !important;
-    color: #dda15e !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #354f52 !important;
 }
 .flexCenter{
     display: flex;
@@ -50,6 +60,34 @@ footer{
     height: 28px;
     line-height: 28px;
     margin-left: 3%;
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+#searchForm{
+    background-color: #2f3e46;
+}
+#searchFormInput{
+    color: #84a98c;
+    width: 90%;
+}
+#searchButton2{
+    height: 28px;
+    line-height: 28px;
+    margin-left: 3%;
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+#searchSubmit{
+    background: none;
+    border: none;
+    color: #84a98c;
+}
+#modal1{
+    background-color: #84a98c;
 }
 #edit{
     height: 100%;
@@ -76,10 +114,16 @@ footer{
     padding: 10px !important;
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
+    color: #84a98c !important;
 }
-
+#mobile-demo{
+    background-color: #84a98c !important;
+}
 .formHolder{
     height: 100% !important;
+}
+.homeCard{
+    background-color: #52796f !important;
 }
 #formGrow{
     height: auto;
@@ -95,8 +139,22 @@ footer{
     flex-direction: column;
     justify-content: space-between;
 }
+#editContainer{
+    background-color: #52796f !important;
+    color: #84a98c !important;
+}
 #bottomHalfImageMain{
-    bottom: 300px !important;
+    bottom: 320px !important;
+    right: 20px !important;
+}
+#topHalfImageMain{
+    left: -20px !important;
+}
+.modal-content{
+    background-color: #84a98c !important;
+}
+#normalAnchor{
+    color: #84a98c !important;
 }
 .pagination{
     width: 55%;
@@ -104,5 +162,9 @@ footer{
     justify-content: space-around;
 }
 .pagination li a {
-    color: #fefae0 !important;
+    color: #2f3e46 !important;
+}
+.card .card-image img{
+    max-height: 335px !important;
+    min-width: 100% !important;
 }

@@ -7,7 +7,7 @@
 <main>
     <h1>Sorry, Error page. Here is a cute puppy</h1>
     <div id="errorImage">
-        <img th:src="@{/img/blackWhitePuppy.jpeg}" width="500px" height="500px"/>
+        <img th:src="@{/img/puppy.jpg}" width="500px" height="500px"/>
     </div>
 <!--    <th:block th:switch="${error}">-->
 <!--        <div th:case="'Not Found'">-->
@@ -17,7 +17,7 @@
 <!--            <h1>You don't have permission to view this page.</h1>-->
 <!--        </div>-->
 <!--    </th:block>-->
-    <a href="/">Go Home</a>
+    <a href="/" id="normalAnchor">Go Home</a>
 </main>
 
 <div th:replace="partials/partials.html :: scripts"></div>

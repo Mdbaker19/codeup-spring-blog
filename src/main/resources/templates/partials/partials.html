@@ -20,7 +20,7 @@
             <a href="/" class="brand-logo"><i class="material-icons">extension</i></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a class="waves-effect waves-light btn modal-trigger center-align" id="searchButton" href="#searchModal">Search</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger center-align" id="searchButton" href="#searchModal"><i class="material-icons">search</i></a></li>
                 <li><a href="/login">Login</a></li>
                 <li><a href="/postPage">See All posts</a></li>
                 <li><a href="/post/create">Create Post</a></li>
@@ -28,16 +28,16 @@
         </div>
     </nav>
     <ul class="sidenav" id="mobile-demo">
-        <li><a class="waves-effect waves-light btn modal-trigger" href="#searchModal">Search</a></li>
+        <li><a class="waves-effect waves-light btn modal-trigger" id="searchButton2" href="#searchModal"><i class="material-icons">search</i></a></li>
         <li><a href="/login">Login</a></li>
         <li><a href="/postPage">See All posts</a></li>
         <li><a href="/post/create">Create Post</a></li>
     </ul>
 
     <div id="searchModal" class="modal">
-        <form action="/post/search" method="get">
-            <input type="text" name="searchValue" />
-            <input type="submit">
+        <form action="/post/search" method="get" id="searchForm">
+            <input type="text" name="searchValue" id="searchFormInput"/>
+            <input type="submit" id="searchSubmit">
         </form>
     </div>
 
@@ -55,9 +55,7 @@
         <div class="modal-content">
             <h4>Are You Sure you want to delete this post?</h4>
         </div>
-        <div class="modal-footer">
-            <a th:href="@{/post/delete/{id}(id=${myPost.id})}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
-        </div>
+        <a th:href="@{/post/delete/{id}(id=${myPost.id})}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
     </div>
 </div>
 
@@ -69,12 +67,12 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Germsky Blog</h5>
+                <h5 class="">Germsky Blog</h5>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">German Shepherd Husky </h5>
+                <h5 class="">German Shepherd Husky </h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="">All about the puppies</a></li>
+                    <li><a href="/">All about the puppies</a></li>
                 </ul>
             </div>
         </div>
@@ -90,7 +88,7 @@
     <div class="container">
         <div class="row">
             <div class="col l8 offset-l2 s12">
-                <h5 class="white-text">Choose Guess</h5>
+                <h5 class="">Choose Guess</h5>
                 <ul>
                     <li><a class="grey-text text-lighten-3" href="/roll-dice/1">1</a></li>
                     <li><a class="grey-text text-lighten-3" href="/roll-dice/2">2</a></li>
