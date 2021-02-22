@@ -116,8 +116,8 @@ public class PostController {
     }
 
     @GetMapping("/postPage")
-    public String findIt(Model model, @RequestParam Optional<String> letter, @PageableDefault(value = 5, sort = "title", direction = Sort.Direction.ASC) Pageable pageable){
-        model.addAttribute("page", postDao.pageDisplay(letter.orElse(""), pageable));
+    public String findIt(Model model, @PageableDefault(value = 5, sort = "title", direction = Sort.Direction.ASC) Pageable pageable){
+        model.addAttribute("page", postDao.findAll(pageable));
         model.addAttribute("title", "Viewing Post Pages");
         return "posts/pages";
     }

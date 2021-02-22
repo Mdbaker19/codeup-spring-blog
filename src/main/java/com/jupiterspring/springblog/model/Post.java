@@ -1,5 +1,4 @@
 package com.jupiterspring.springblog.model;
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.Date;

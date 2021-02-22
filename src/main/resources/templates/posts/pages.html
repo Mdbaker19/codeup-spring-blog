@@ -30,7 +30,7 @@
         <ul class="pagination">
             <li th:class="${page.isFirst()}? 'disabled' : ''">
                 <span th:if='${not page.isFirst()}'>
-                    <a th:href="'?page=0'">← First</a>
+                    <a th:href="'?page=0'"><i class="material-icons">first_page</i></a>
                 </span>
             </li>
             <li th:class="${page.hasPrevious()}? '' : 'disabled'">
@@ -39,7 +39,7 @@
                             th:href="'?page=' + ${page.getNumber() - 1}"
                             title='Go to previous page'
                     >
-                        «
+                        <i class="material-icons">chevron_left</i>
                     </a>
                 </span>
             </li>
@@ -62,14 +62,14 @@
                             th:href="'?page=' + ${page.getNumber() + 1}"
                             title='Go to next page'
                     >
-                        »
+                        <i class="material-icons">chevron_right</i>
                     </a>
                 </span>
             </li>
             <li th:class="${page.isLast()}? 'disabled' : ''">
                 <span th:if='${not page.isLast()}'>
                     <a th:href="'?page=' + ${page.getTotalPages() - 1}">
-                        Last →
+                        <i class="material-icons">last_page</i>
                     </a>
                 </span>
             </li>
