@@ -1,6 +1,8 @@
 package com.jupiterspring.springblog.controllers;
 import com.jupiterspring.springblog.model.Post;
+import com.jupiterspring.springblog.model.User;
 import com.jupiterspring.springblog.repositories.PostRepository;
+import com.jupiterspring.springblog.repositories.UserRepository;
 import com.jupiterspring.springblog.util.Methods;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -18,10 +20,12 @@ import java.util.Optional;
 public class PostController {
 
     private final PostRepository postDao;
+    private final UserRepository userDao;
     Methods m = new Methods();
 
-    public PostController(PostRepository postDao){
+    public PostController(PostRepository postDao, UserRepository userDao){
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/")
@@ -58,48 +62,46 @@ public class PostController {
     }
 
 
-
     @GetMapping("/post/{id}")
     public String getOne(@PathVariable long id, Model model){
         Post myPost = postDao.getOne(id);
         model.addAttribute("myPost", myPost);
-        model.addAttribute("title", "This Post");
+        model.addAttribute("title", myPost.getTitle());
         return "posts/show";
     }
 
     @GetMapping("/post/create")
     public String createForm(Model model){
         model.addAttribute("title", "Create Your Post");
+        model.addAttribute("post", new Post());
         return "posts/createPost";
     }
 
+    // duplicate title entry causes error page unique constraint
     @PostMapping("/post/create")
-    public String createPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, @RequestParam(name = "author") String author, Model model){
-        Post newPost = new Post();
-        newPost.setDate(new Date());
-        newPost.setAuthor(m.cap(author));
-        newPost.setBody(body);
-        newPost.setTitle(title);
-        postDao.save(newPost);
-        Post myPost = postDao.getOne(newPost.getId());
-        model.addAttribute("myPost", myPost);
-        model.addAttribute("title", "This Post");
+    public String createPost(@ModelAttribute Post post, Model model){
+        User temp = userDao.getOne(1L);
+        post.setDate(new Date());
+        post.setOwner(temp);
+        post.setAuthor(temp.getUsername());
+        postDao.save(post);
+        model.addAttribute("myPost", post);
+        model.addAttribute("title", post.getTitle());
         return "posts/show";
     }
 
     @GetMapping("/post/search")
     public String searchPost(@RequestParam String searchValue, Model model){
-        List<Post> post = postDao.findPostByTitle(searchValue);
-        model.addAttribute("myPost", post.get(0));
-        model.addAttribute("title", "Viewing Searched Post");
+        Post post = postDao.findPostByTitle(searchValue);
+        model.addAttribute("myPost", post);
+        model.addAttribute("title", post.getTitle());
         return "posts/show";
     }
 
     @GetMapping("/post/delete/{id}")
-    public String deletePost(Model model, @PathVariable long id){
-        Post thisPost = postDao.getOne(id);
-        postDao.delete(thisPost);
-        return allPosts(model);
+    public String deletePost(@PathVariable long id){
+        postDao.deleteById(id);
+        return "redirect:/postPage";
     }
 
     @PostMapping("/post/edit")

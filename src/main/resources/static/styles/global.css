@@ -4,7 +4,6 @@
     padding: 0;
     font-family: 'Newsreader', serif;
 }
-
 body{
     background-color: #2f3e46 !important;
 }
@@ -12,15 +11,37 @@ nav{
     background-color: #84a98c !important;
     color: #cad2c5 !important;
 }
-.card{
-    background-color: #52796f !important;
-    color: #cad2c5 !important;
-}
 main{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
+footer{
+    background-color: #354f52 !important;
+    color: #2f3e46 !important;
+}
+a{
+    color: #2f3e46 !important;
+}
+
+
+.card{
+    background-color: #52796f !important;
+    color: #cad2c5 !important;
+}
+.card .card-image img{
+    max-height: 335px !important;
+    min-width: 100% !important;
+}
+.homeCard{
+    background-color: #52796f !important;
+}
+.card-action{
+    display: flex;
+    justify-content: space-around;
+}
+
+
 .deleteButton{
     background: none !important;
     box-shadow: none !important;
@@ -30,22 +51,57 @@ main{
 .activator:hover{
     cursor: pointer !important;
 }
-footer{
-    background-color: #354f52 !important;
-    color: #2f3e46 !important;
-}
-a{
-    color: #2f3e46 !important;
-}
 .moreButton{
     background: none !important;
     box-shadow: none !important;
     border: none !important;
     color: #354f52 !important;
 }
+#createFormButton{
+    background-color: #354f52 !important;
+    color: #84a98c !important;
+}
+
+
 .flexCenter{
     display: flex;
     justify-content: center;
+}
+
+
+.formLabel{
+    text-align: center !important;
+    font-size: 20px !important;
+}
+.formLabelEdit{
+    font-size: 20px !important;
+}
+.customInput{
+    padding: 10px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    color: #cad2c5 !important;
+}
+.formHolder{
+    height: 100% !important;
+}
+.textBody{
+    height: 60%;
+    width: 100%;
+}
+#formGrow{
+    height: auto;
+    max-width: 730px !important;
+}
+#editForm{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#editContainer{
+    background-color: #52796f !important;
+    color: #84a98c !important;
 }
 #formContainer{
     height: 85vh;
@@ -54,7 +110,21 @@ a{
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+#searchForm{
+    background-color: #2f3e46;
+}
+#searchFormInput{
+    color: #84a98c;
+    width: 90%;
+}
+
+
+
+#searchBar{
+    margin-left: 70px !important;
+    width: 35% !important;
 }
 #searchButton{
     height: 28px;
@@ -64,13 +134,6 @@ a{
     border: none;
     outline: none;
     box-shadow: none;
-}
-#searchForm{
-    background-color: #2f3e46;
-}
-#searchFormInput{
-    color: #84a98c;
-    width: 90%;
 }
 #searchButton2{
     height: 28px;
@@ -86,6 +149,11 @@ a{
     border: none;
     color: #84a98c;
 }
+
+
+.modal-content{
+    background-color: #84a98c !important;
+}
 #modal1{
     background-color: #84a98c;
 }
@@ -95,54 +163,14 @@ a{
     flex-direction: column;
     justify-content: space-between;
 }
-#searchBar{
-    margin-left: 70px !important;
-    width: 35% !important;
-}
-.card-action{
-    display: flex;
-    justify-content: space-around;
-}
-.formLabel{
-    text-align: center !important;
-    font-size: 20px !important;
-}
-.formLabelEdit{
-    font-size: 20px !important;
-}
-.customInput{
-    padding: 10px !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+#normalAnchor{
     color: #84a98c !important;
 }
 #mobile-demo{
     background-color: #84a98c !important;
 }
-.formHolder{
-    height: 100% !important;
-}
-.homeCard{
-    background-color: #52796f !important;
-}
-#formGrow{
-    height: auto;
-    max-width: 730px !important;
-}
-.textBody{
-    height: 60%;
-    width: 100%;
-}
-#editForm{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-#editContainer{
-    background-color: #52796f !important;
-    color: #84a98c !important;
-}
+
+
 #bottomHalfImageMain{
     bottom: 320px !important;
     right: 20px !important;
@@ -150,12 +178,8 @@ a{
 #topHalfImageMain{
     left: -20px !important;
 }
-.modal-content{
-    background-color: #84a98c !important;
-}
-#normalAnchor{
-    color: #84a98c !important;
-}
+
+
 .pagination{
     width: 55%;
     display: flex;
@@ -163,8 +187,4 @@ a{
 }
 .pagination li a {
     color: #2f3e46 !important;
-}
-.card .card-image img{
-    max-height: 335px !important;
-    min-width: 100% !important;
 }

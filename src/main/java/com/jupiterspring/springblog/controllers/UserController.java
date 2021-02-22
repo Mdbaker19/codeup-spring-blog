@@ -16,7 +16,14 @@ public class UserController {
     @GetMapping("/register")
     public String registerPage(Model model){
         model.addAttribute("title", "Register Page");
+
         return "users/register";
+    }
+
+    @GetMapping("/profile")
+    public String profilePage(Model model){
+        model.addAttribute("title", "Your Profile Page");
+        return "users/profile";
     }
 
 }

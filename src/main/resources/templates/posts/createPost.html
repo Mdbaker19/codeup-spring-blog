@@ -8,20 +8,14 @@
     <h1 style="text-align: center">Create Post</h1>
 
     <div class="container" id="formContainer">
-        <form id="createForm" action="/post/create" method="POST">
+        <form id="createForm" action="#" th:action="@{/post/create}" method="POST" th:object="${post}">
             <div class="input-field">
-                <input name="author" id="author" type="text" class="validate customInput">
-                <label for="author" class="formLabel">Author Name</label>
+                <p class="formLabel">Title: <input th:field="*{title}" class="validate customInput"/></p>
             </div>
             <div class="input-field">
-                <input name="title" id="title" type="text" class="validate customInput">
-                <label for="title" class="formLabel">Title</label>
+                <p class="formLabel">Body: <input th:field="*{body}" class="validate customInput"/></p>
             </div>
-            <div class="input-field">
-                <input name="body" id="body" type="text" class="validate customInput">
-                <label for="body" class="formLabel">Body</label>
-            </div>
-            <button>Submit</button>
+            <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
         </form>
     </div>
 </main>

@@ -25,23 +25,25 @@ public class Post {
     @Column(nullable = false)
     private Date date;
 
-    @OneToOne
+    @ManyToOne
     private User owner;
 
     public Post(){}
 
-    public Post(long id, String a, String t, String b, Date d){
+    public Post(long id, String a, String t, String b, Date d, User owner){
         this.id = id;
         this.author = a;
         this.title = t;
         this.body = b;
         this.date = d;
+        this.owner = owner;
     }
-    public Post(String a, String t, String b, Date d){
+    public Post(String a, String t, String b, Date d, User owner){
         this.author = a;
         this.title = t;
         this.body = b;
         this.date = d;
+        this.owner = owner;
     }
 
     public String getTitle() {
@@ -82,5 +84,13 @@ public class Post {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }

@@ -1,6 +1,7 @@
 package com.jupiterspring.springblog.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -11,17 +12,17 @@ public class User {
     @Column(columnDefinition = "int(11) unsigned")
     private long id;
 
-
     @Column(nullable = false, unique = true)
     private String username;
-
 
     @Column(nullable = false, unique = true)
     private String email;
 
-
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "owner") // hibernate looks at the annotation and finds the value, more so it is the JPA annotation that does it
+    private List<Post> posts;
 
     public User(){}
 
@@ -62,5 +63,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }

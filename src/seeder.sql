@@ -2,6 +2,9 @@ create database if not exists blog_db;
 use blog_db;
 drop table if exists posts;
 drop table if exists users;
+show tables;
+
+insert into users(email, password, username) VALUES ('matt@matt.matt', 'matthew', 'matt');
 
 insert into posts (owner_id, author, title, body, date) values (1, 'Libbi', 'middleware', 'Speak vet kibbles heel chow chow stay english mastiff greyhound heel. Speak dog shih tzu vet stand leash, puppies leave it play dead pug yorkshire terrier pomsky. Stand greyhound catch boxer bite, down growl release english mastiff release speak dog toy dog house lab.
 Bite chase tail bell tennis ball dog bowl kibbles paw tug release. Leash tail vet pomsky leash rottweiler puppies, yorkshire terrier dog bone st bernard chow chow. Sit pretty puppies bring it heel collar vet chase tail sit pretty dog house.', '2013/11/5');
@@ -49,10 +52,7 @@ insert into posts (owner_id, author, title, body, date) values (1, 'Caty', 'even
 insert into posts (owner_id, author, title, body, date) values (1, 'Ginni', 'policy', 'Leash growl leap chase tail poodle great dance, growl pomsky stand kibbles milk bone husky heel dog toy. Yorkshire terrier jump play dead shih tzu play dead speak, bring it take it beagle speak. Yorkshire terrier english mastiff squeak toy english mastiff, dachshund sit maltese bring it roll over great dance.
 Doberman pinscher bell rottweiler, speak dachshund paw bring it bark bulldog down catch. St bernard jump chow chow husky collar fetch greyhound. Fetch speak growl husky shih tzu, bark english mastiff dog bone leash shake.', '2013/5/14');
 
-insert into users(email, password, username) VALUES ('matt@matt.matt', 'matthew', 'matt');
 
 select * from posts;
 
 select * from users;
-
-select * from posts where title like 'r%' limit 1;

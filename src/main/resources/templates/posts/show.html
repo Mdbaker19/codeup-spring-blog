@@ -20,6 +20,8 @@
                         <h4 class="left grey-text" th:text="${myPost.author}"></h4>
                         <button th:replace="partials/partials.html :: deleteModal">Delete</button>
                         <span class="activator" id="revealForm"><i class="material-icons">border_color</i></span>
+                        <h6 th:text="${myPost.owner.username}"></h6>
+                        <h6 th:text="${myPost.owner.email}"></h6>
                     </div>
                     <div class="card-reveal" id="editContainer">
                         <span class="card-title" id="closeForm"><i class="material-icons right">close</i></span>
@@ -39,7 +41,7 @@
                                     <label for="body" class="formLabelEdit">Body</label>
                                 </div>
                                 <input type="hidden" name="currId" th:value="${myPost.id}"/>
-                                <button>Submit</button>
+                                <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
                             </form>
                         </div>
 
