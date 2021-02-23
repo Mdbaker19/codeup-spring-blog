@@ -7,17 +7,8 @@
     <header th:include="partials/partials.html :: header"></header>
     <h1 style="text-align: center">Create Post</h1>
 
-    <div class="container" id="formContainer">
-        <form id="createForm" action="#" th:action="@{/post/create}" method="POST" th:object="${post}">
-            <div class="input-field">
-                <p class="formLabel">Title: <input th:field="*{title}" class="validate customInput"/></p>
-            </div>
-            <div class="input-field">
-                <p class="formLabel">Body: <input th:field="*{body}" class="validate customInput"/></p>
-            </div>
-            <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
-        </form>
-    </div>
+    <div th:replace="partials/partials.html :: editAndCreateForm"></div>
+
 </main>
 
 <footer th:include="partials/partials.html :: pageFooter"></footer>

@@ -64,9 +64,11 @@ public class PostController {
 
     @GetMapping("/post/{id}")
     public String getOne(@PathVariable long id, Model model){
-        Post myPost = postDao.getOne(id);
-        model.addAttribute("myPost", myPost);
-        model.addAttribute("title", myPost.getTitle());
+        Post post = postDao.getOne(id);
+        User temp = userDao.getOne(1L);
+        post.setOwner(temp);
+        model.addAttribute("post", post);
+        model.addAttribute("title", post.getTitle());
         return "posts/show";
     }
 
@@ -85,7 +87,7 @@ public class PostController {
         post.setOwner(temp);
         post.setAuthor(temp.getUsername());
         postDao.save(post);
-        model.addAttribute("myPost", post);
+        model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
         return "posts/show";
     }
@@ -93,7 +95,7 @@ public class PostController {
     @GetMapping("/post/search")
     public String searchPost(@RequestParam String searchValue, Model model){
         Post post = postDao.findPostByTitle(searchValue);
-        model.addAttribute("myPost", post);
+        model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
         return "posts/show";
     }
@@ -105,14 +107,13 @@ public class PostController {
     }
 
     @PostMapping("/post/edit")
-    public String editThePost(Model model, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body, @RequestParam(name = "author") String author, @RequestParam(name = "currId") long id){
-        Post currPost = postDao.getOne(id);
-        currPost.setTitle(title);
-        currPost.setBody(body);
-        currPost.setAuthor(m.cap(author));
-        currPost.setDate(new Date());
-        postDao.save(currPost);
-        return getOne(id, model);
+    public String editThePost(Model model, @ModelAttribute Post post){
+        User temp = userDao.getOne(1L);
+        post.setOwner(temp);
+        post.setAuthor(temp.getUsername());
+        post.setDate(new Date());
+        postDao.save(post);
+        return getOne(post.getId(), model);
     }
 
     @GetMapping("/postPage")

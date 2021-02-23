@@ -58,11 +58,24 @@
 <!--        <form th:action="@{/post/delete/{id}(id=${myPost.id})}" method="post">-->
 <!--            <button class="modal-close waves-effect waves-green btn-flat">Delete</button>-->
 <!--        </form>-->
-        <a th:href="@{/post/delete/{id}(id=${myPost.id})}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
+        <a th:href="@{/post/delete/{id}(id=${post.id})}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
     </div>
 </div>
 
 
+
+<div th:fragment="editAndCreateForm" id="formContainer">
+    <form id="editForm" action="#" th:action="@{/post/edit}" method="POST" th:object="${post}">
+        <div class="input-field">
+            <p class="formLabelEdit">Title: <input th:field="*{title}" type="text" class="validate customInput"></p>
+        </div>
+        <div class="input-field textBody">
+            <p class="formLabelEdit">Body: <textarea th:field="*{body}" type="text" class="validate customInput editBody materialize-textarea"></textarea></p>
+        </div>
+        <input type="hidden" th:field="*{id}"/>
+        <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
+    </form>
+</div>
 
 
 

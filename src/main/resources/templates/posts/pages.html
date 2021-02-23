@@ -35,35 +35,22 @@
             </li>
             <li th:class="${page.hasPrevious()}? '' : 'disabled'">
                 <span th:if='${page.hasPrevious()}'>
-                    <a
-                            th:href="'?page=' + ${page.getNumber() - 1}"
-                            title='Go to previous page'
-                    >
-                        <i class="material-icons">chevron_left</i>
-                    </a>
+                    <a th:href="'?page=' + ${page.getNumber() - 1}"><i class="material-icons">chevron_left</i></a>
                 </span>
             </li>
+
             <li th:each="i : ${#numbers.sequence(1, page.getTotalPages())}">
-                <span
-                        th:if='${(i - 1) == param.page}'
-                        th:text='${i}'>
-                    1
-                </span>
                 <a
                         th:if='${not ((i - 1) == param.page)}'
                         th:href="'?page=' + ${(i -1)}"
                 >
-                    <span th:text='${i}'>1</span>
+                    <span th:text='${i}' th:style="${i - 1 == page.getNumber()}? 'text-decoration: underline;font-weight: bold ' : ''">1</span>
                 </a>
             </li>
+
             <li th:class="${page.hasNext()} ? '' : 'disabled'">
                 <span th:if='${page.hasNext()}'>
-                    <a
-                            th:href="'?page=' + ${page.getNumber() + 1}"
-                            title='Go to next page'
-                    >
-                        <i class="material-icons">chevron_right</i>
-                    </a>
+                    <a th:href="'?page=' + ${page.getNumber() + 1}"><i class="material-icons">chevron_right</i></a>
                 </span>
             </li>
             <li th:class="${page.isLast()}? 'disabled' : ''">

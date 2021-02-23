@@ -25,7 +25,7 @@ public class Post {
     private Date date;
 
     @ManyToOne
-    private User owner;
+    private User owner; // should be user not owner just so naming conventions
 
     public Post(){}
 

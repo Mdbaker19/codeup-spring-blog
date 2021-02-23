@@ -11,39 +11,22 @@
             <div class="col s12 formHolder">
                 <div class="card darken-1 formHolder">
                     <div class="card-content">
-                        <p th:text="${myPost.date.toString().substring(0, 11)}" class="right"></p>
-                        <span class="card-title" th:text="${myPost.title}"></span>
+                        <p th:text="${post.date.toString().substring(0, 11)}" class="right"></p>
+                        <span class="card-title" th:text="${post.title}"></span>
                         <div class="divider"></div>
-                        <p th:text="${myPost.body}"></p>
+                        <p th:text="${post.body}"></p>
                     </div>
                     <div class="card-action">
-                        <h4 class="left grey-text" th:text="${myPost.author}"></h4>
+                        <h4 class="left grey-text" th:text="${post.author}"></h4>
                         <button th:replace="partials/partials.html :: deleteModal">Delete</button>
                         <span class="activator" id="revealForm"><i class="material-icons">border_color</i></span>
-                        <h6 th:text="${myPost.owner.username}"></h6>
-                        <h6 th:text="${myPost.owner.email}"></h6>
+                        <h6 th:text="${post.owner.username}"></h6>
+                        <h6 th:text="${post.owner.email}"></h6>
                     </div>
                     <div class="card-reveal" id="editContainer">
                         <span class="card-title" id="closeForm"><i class="material-icons right">close</i></span>
 
-                        <div id="formContainer">
-                            <form id="editForm" action="/post/edit" method="POST">
-                                <div class="input-field">
-                                    <input name="author" id="author" type="text" class="validate customInput" th:value="${myPost.author}">
-                                    <label for="author" class="formLabelEdit">Author Name</label>
-                                </div>
-                                <div class="input-field">
-                                    <input name="title" id="title" type="text" class="validate customInput" th:value="${myPost.title}">
-                                    <label for="title" class="formLabelEdit">Title</label>
-                                </div>
-                                <div class="input-field textBody">
-                                    <textarea name="body" id="body" type="text" class="validate customInput editBody materialize-textarea" th:text="${myPost.body}"></textarea>
-                                    <label for="body" class="formLabelEdit">Body</label>
-                                </div>
-                                <input type="hidden" name="currId" th:value="${myPost.id}"/>
-                                <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
-                            </form>
-                        </div>
+                        <div th:replace="partials/partials.html :: editAndCreateForm"></div>
 
                     </div>
                 </div>

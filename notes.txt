@@ -7,3 +7,5 @@ get snippet from curriculum
 change as needed
 
 example properties is the code snippet
+
+spring.jpa.hibernate.ddl-auto=create-drop // create and drop you db when you run you application

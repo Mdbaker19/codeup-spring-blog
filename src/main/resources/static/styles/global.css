@@ -69,11 +69,9 @@ a{
 }
 
 
-.formLabel{
-    text-align: center !important;
-    font-size: 20px !important;
-}
+
 .formLabelEdit{
+    text-align: center !important;
     font-size: 20px !important;
 }
 .customInput{
@@ -97,7 +95,7 @@ a{
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 #editContainer{
     background-color: #52796f !important;
@@ -105,12 +103,6 @@ a{
 }
 #formContainer{
     height: 85vh;
-}
-#createForm{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
 #searchForm{
     background-color: #2f3e46;
@@ -184,7 +176,4 @@ a{
     width: 55%;
     display: flex;
     justify-content: space-around;
-}
-.pagination li a {
-    color: #2f3e46 !important;
 }
