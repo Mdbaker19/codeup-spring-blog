@@ -30,34 +30,21 @@ public class PostController {
     @GetMapping("/")
     public String topPosts(Model model){
         List<Post> all = postDao.findAll();
-        List<Post> top3 = new ArrayList<>();
-        List<Post> bottom3 = new ArrayList<>();
-        List<String> homeImages = new ArrayList<>();
-        homeImages.add("/img/grassPuppy.jpeg");
-        homeImages.add("/img/snowDog.jpeg");
-        homeImages.add("/img/puppy.jpg");
-        homeImages.add("/img/snowHusky.jpeg");
-        homeImages.add("/img/wildHusky.jpeg");
-        homeImages.add("/img/wildPuppy.jpeg");
-        for(int i = 0; i < 3; i++){
-            top3.add(all.get(i));
+        List<Post> featurePosts = new ArrayList<>();
+        List<String> featurePostImages = new ArrayList<>();
+        featurePostImages.add("/img/grassPuppy.jpeg");
+        featurePostImages.add("/img/snowDog.jpeg");
+        featurePostImages.add("/img/puppy.jpg");
+        featurePostImages.add("/img/snowHusky.jpeg");
+        featurePostImages.add("/img/wildHusky.jpeg");
+        featurePostImages.add("/img/wildPuppy.jpeg");
+        for(int i = 0; i < 6; i++){
+            featurePosts.add(all.get(i));
         }
-        for(int i = 3; i < 6; i++){
-            bottom3.add(all.get(i));
-        }
-        model.addAttribute("postsTop", top3);
-        model.addAttribute("postsBottom", bottom3);
-        model.addAttribute("imgList", homeImages);
-        model.addAttribute("title", "Home Page");
+        model.addAttribute("featurePosts", featurePosts);
+        model.addAttribute("imgList", featurePostImages);
+        model.addAttribute("title", "Dog Blog");
         return "home";
-    }
-
-    @GetMapping("/post")
-    public String allPosts(Model model){
-        List<Post> posts = postDao.findAll();
-        model.addAttribute("posts", posts);
-        model.addAttribute("title", "All Posts");
-        return "posts/pages";
     }
 
 

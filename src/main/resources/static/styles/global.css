@@ -24,19 +24,27 @@ a{
     color: #2f3e46 !important;
 }
 
-
+.homeRow{
+    display: flex;
+    justify-content: space-around;
+}
+.homeSection{
+    padding-bottom: 0;
+}
 .card{
     background-color: #52796f !important;
     color: #cad2c5 !important;
     box-shadow: -7px 8px #233037 !important;
 }
 .card .card-image img{
-    max-height: 335px !important;
+    max-height: 301px !important;
     min-width: 100% !important;
 }
 .homeCard{
     background-color: #52796f !important;
     box-shadow: none !important;
+    max-width: 475px !important;
+    margin: 0 auto !important;
 }
 .card-action{
     display: flex;

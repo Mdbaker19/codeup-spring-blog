@@ -3,6 +3,9 @@
 <head th:include="partials/partials.html :: styleHead"></head>
 <body>
     <header th:include="partials/partials.html :: header"></header>
+
+
+
 <main>
 
 
@@ -10,58 +13,13 @@
         <div class="parallax" id="topHalfImageMain"><img alt="dogImage" th:src="@{/img/huskyBanner.jpeg}"></div>
     </div>
 
-    <div class="section">
-        <div class="row">
-
-            <div class="card homeCard col s12 m6 l4">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img alt="dogImage" class="activator" th:src="${imgList.get(0)}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Post 1<i class="material-icons right">more_vert</i></span>
-                    <p><a th:href="@{/post/{id}(id=${postsTop.get(0).getId()})}">View More</a></p>
-                </div>
-                <div class="card-reveal homeCard">
-                    <span class="card-title grey-text text-darken-4 right" th:text="X"><i class="material-icons right">close</i></span>
-                    <span class="card-title grey-text text-darken-4" th:text="${postsTop.get(0).getTitle()}"></span>
-                    <p th:text="${postsTop.get(0).getBody()}"></p>
-                    <p><a th:href="@{/post/{id}(id=${postsTop.get(0).getId()})}">View More</a></p>
-                </div>
+    <div class="section homeSection">
+        <div class="row homeRow">
+            <div th:each="i : ${#numbers.sequence(0, 2)}" th:classappend="${i == 1 ? 'hide-on-small-only' : ''}" th:attr="class=${i == 2 ? 'card homeCard col s12 m6 l4 hide-on-med-and-down' : 'card homeCard col s12 m6 l4'}">
+                <th:block th:include="partials/partials.html :: homeCardTop"></th:block>
             </div>
-
-            <div class="card homeCard col hide-on-small-only m6 l4">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img alt="dogImage" class="activator" th:src="@{/img/snowDog.jpeg}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Post 2<i class="material-icons right">more_vert</i></span>
-                    <p><a th:href="@{/post/{id}(id=${postsTop.get(1).getId()})}">View More</a></p>
-                </div>
-                <div class="card-reveal homeCard">
-                    <span class="card-title grey-text text-darken-4 right" th:text="X"><i class="material-icons right">close</i></span>
-                    <span class="card-title grey-text text-darken-4" th:text="${postsTop.get(1).getTitle()}"></span>
-                    <p th:text="${postsTop.get(1).getBody()}"></p>
-                    <p><a th:href="@{/post/{id}(id=${postsTop.get(1).getId()})}">View More</a></p>
-                </div>
-            </div>
-
-            <div class="card homeCard col hide-on-med-and-down l4">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img alt="dogImage" class="activator" th:src="@{/img/blackWhitePuppy.jpeg}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Post 3<i class="material-icons right">more_vert</i></span>
-                    <p><a th:href="@{/post/{id}(id=${postsTop.get(2).getId()})}">View More</a></p>
-                </div>
-                <div class="card-reveal homeCard">
-                    <span class="card-title grey-text text-darken-4 right" th:text="X"><i class="material-icons right">close</i></span>
-                    <span class="card-title grey-text text-darken-4" th:text="${postsTop.get(2).getTitle()}"></span>
-                    <p th:text="${postsTop.get(2).getBody()}"></p>
-                    <p><a th:href="@{/post/{id}(id=${postsTop.get(2).getId()})}">View More</a></p>
-                </div>
-            </div>
-
         </div>
+
     </div>
     <div class="parallax-container">
         <div class="parallax" id="bottomHalfImageMain">
@@ -70,61 +28,25 @@
     </div>
 
 
-    <div class="section">
-        <div class="row">
-
-            <div class="card homeCard col s12 m6 l4">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img alt="dogImage" class="activator" th:src="@{/img/snowHusky.jpeg}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Post 4<i class="material-icons right">more_vert</i></span>
-                    <p><a th:href="@{/post/{id}(id=${postsBottom.get(0).getId()})}">View More</a></p>
-                </div>
-                <div class="card-reveal homeCard">
-                    <span class="card-title grey-text text-darken-4 right" th:text="X"><i class="material-icons right">close</i></span>
-                    <span class="card-title grey-text text-darken-4" th:text="${postsBottom.get(0).getTitle()}"></span>
-                    <p th:text="${postsBottom.get(0).getBody()}"></p>
-                    <p><a th:href="@{/post/{id}(id=${postsBottom.get(0).getId()})}">View More</a></p>
-                </div>
-            </div>
-
-            <div class="card homeCard col hide-on-small-only m6 l4">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img alt="dogImage" class="activator" th:src="@{/img/wildHusky.jpeg}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Post 5<i class="material-icons right">more_vert</i></span>
-                    <p><a th:href="@{/post/{id}(id=${postsBottom.get(1).getId()})}">View More</a></p>
-                </div>
-                <div class="card-reveal homeCard">
-                    <span class="card-title grey-text text-darken-4 right" th:text="X"><i class="material-icons right">close</i></span>
-                    <span class="card-title grey-text text-darken-4" th:text="${postsBottom.get(1).getTitle()}"></span>
-                    <p th:text="${postsBottom.get(1).getBody()}"></p>
-                    <p><a th:href="@{/post/{id}(id=${postsBottom.get(1).getId()})}">View More</a></p>
-                </div>
-            </div>
-
-            <div class="card homeCard col hide-on-med-and-down l4">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img alt="dogImage" class="activator" th:src="@{/img/wildPuppy.jpeg}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Post 6<i class="material-icons right">more_vert</i></span>
-                    <p><a th:href="@{/post/{id}(id=${postsBottom.get(2).getId()})}">View More</a></p>
-                </div>
-                <div class="card-reveal homeCard">
-                    <span class="card-title grey-text text-darken-4 right" th:text="X"><i class="material-icons right">close</i></span>
-                    <span class="card-title grey-text text-darken-4" th:text="${postsBottom.get(2).getTitle()}"></span>
-                    <p th:text="${postsBottom.get(2).getBody()}"></p>
-                    <p><a th:href="@{/post/{id}(id=${postsBottom.get(2).getId()})}">View More</a></p>
-                </div>
+    <div class="section homeSection">
+        <div class="row homeRow">
+            <div th:each="i : ${#numbers.sequence(3, 5)}" th:classappend="${i == 4 ? 'hide-on-small-only' : ''}" th:attr="class=${i == 5 ? 'card homeCard col s12 m6 l4 hide-on-med-and-down' : 'card homeCard col s12 m6 l4'}">
+                <th:block th:include="partials/partials.html :: homeCardTop"></th:block>
             </div>
 
         </div>
     </div>
 
 </main>
+
+
+
+
+
+
+
+
+
 
 <footer th:include="partials/partials.html :: pageFooter"></footer>
 <div th:replace="partials/partials.html :: scripts"></div>
