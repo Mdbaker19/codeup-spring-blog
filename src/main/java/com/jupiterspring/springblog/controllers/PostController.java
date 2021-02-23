@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -66,7 +65,7 @@ public class PostController {
     public String getOne(@PathVariable long id, Model model){
         Post post = postDao.getOne(id);
         User temp = userDao.getOne(1L);
-        post.setOwner(temp);
+        post.setUser(temp);
         model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
         return "posts/show";
@@ -84,9 +83,9 @@ public class PostController {
     public String createPost(@ModelAttribute Post post, Model model){
         User temp = userDao.getOne(1L);
         post.setDate(new Date());
-        post.setOwner(temp);
-        post.setAuthor(temp.getUsername());
-        postDao.save(post);
+        post.setUser(temp);
+        post.setAuthor(temp.getUsername()); // i believe i only need this for now while my posts are from made up users
+        Post savedPost = postDao.save(post); // to use to then send an email or something
         model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
         return "posts/show";
@@ -109,7 +108,7 @@ public class PostController {
     @PostMapping("/post/edit")
     public String editThePost(Model model, @ModelAttribute Post post){
         User temp = userDao.getOne(1L);
-        post.setOwner(temp);
+        post.setUser(temp);
         post.setAuthor(temp.getUsername());
         post.setDate(new Date());
         postDao.save(post);
@@ -119,7 +118,7 @@ public class PostController {
     @GetMapping("/postPage")
     public String findIt(Model model, @PageableDefault(value = 5, sort = "title", direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("page", postDao.findAll(pageable));
-        model.addAttribute("title", "Viewing Post Pages");
+        model.addAttribute("title", "Viewing Post Page " + (Integer.parseInt(String.valueOf(pageable.getPageNumber())) + 1));
         return "posts/pages";
     }
 

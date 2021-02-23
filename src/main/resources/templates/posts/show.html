@@ -17,16 +17,21 @@
                         <p th:text="${post.body}"></p>
                     </div>
                     <div class="card-action">
-                        <h4 class="left grey-text" th:text="${post.author}"></h4>
+                        <h4 class="left grey-text" th:text="${post.author}"></h4> <!--this will be the user name later-->
                         <button th:replace="partials/partials.html :: deleteModal">Delete</button>
                         <span class="activator" id="revealForm"><i class="material-icons">border_color</i></span>
-                        <h6 th:text="${post.owner.username}"></h6>
-                        <h6 th:text="${post.owner.email}"></h6>
+<!--                        <h6 th:text="${post.user.username}"></h6> &lt;!&ndash;This will be moved to the post author later&ndash;&gt;-->
+                        <h6 th:text="${post.user.email}"></h6>
                     </div>
                     <div class="card-reveal" id="editContainer">
                         <span class="card-title" id="closeForm"><i class="material-icons right">close</i></span>
 
-                        <div th:replace="partials/partials.html :: editAndCreateForm"></div>
+                        <div id="formContainer">
+                            <form th:insert="partials/partials.html :: editAndCreateForm" id="editForm" th:action="@{/post/edit}" th:object="${post}" th:method="Post"></form>
+                        </div>
+
+
+
 
                     </div>
                 </div>

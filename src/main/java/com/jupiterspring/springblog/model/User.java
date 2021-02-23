@@ -21,7 +21,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "owner") // hibernate looks at the annotation and finds the value, more so it is the JPA annotation that does it
+    @OneToMany(mappedBy = "user") // hibernate looks at the annotation and finds the value, more so it is the JPA annotation that does it
     private List<Post> posts;
 
     public User(){}

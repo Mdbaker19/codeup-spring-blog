@@ -6,8 +6,18 @@
 <main>
     <header th:include="partials/partials.html :: header"></header>
     <h1 style="text-align: center">Create Post</h1>
+    <div class="container" id="formGrow">
+        <div class="row formHolder">
+            <div class="col s12 formHolder">
+                <div class="card darken-1 formHolder">
+                    <div class="shadowedForm" id="formContainer">
+                        <form th:insert="partials/partials.html :: editAndCreateForm" id="editForm" th:action="@{/post/create}" th:object="${post}" th:method="Post"></form>
+                    </div>
 
-    <div th:replace="partials/partials.html :: editAndCreateForm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </main>
 

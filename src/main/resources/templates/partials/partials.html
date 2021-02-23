@@ -62,10 +62,7 @@
     </div>
 </div>
 
-
-
-<div th:fragment="editAndCreateForm" id="formContainer">
-    <form id="editForm" action="#" th:action="@{/post/edit}" method="POST" th:object="${post}">
+    <form th:fragment="editAndCreateForm">
         <div class="input-field">
             <p class="formLabelEdit">Title: <input th:field="*{title}" type="text" class="validate customInput"></p>
         </div>
@@ -75,7 +72,7 @@
         <input type="hidden" th:field="*{id}"/>
         <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
     </form>
-</div>
+
 
 
 

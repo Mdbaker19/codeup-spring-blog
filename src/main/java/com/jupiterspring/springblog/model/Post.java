@@ -25,24 +25,24 @@ public class Post {
     private Date date;
 
     @ManyToOne
-    private User owner; // should be user not owner just so naming conventions
+    private User user; // should be user not owner just so naming conventions
 
     public Post(){}
 
-    public Post(long id, String a, String t, String b, Date d, User owner){
+    public Post(long id, String a, String t, String b, Date d, User user){
         this.id = id;
         this.author = a;
         this.title = t;
         this.body = b;
         this.date = d;
-        this.owner = owner;
+        this.user = user;
     }
-    public Post(String a, String t, String b, Date d, User owner){
+    public Post(String a, String t, String b, Date d, User user){
         this.author = a;
         this.title = t;
         this.body = b;
         this.date = d;
-        this.owner = owner;
+        this.user = user;
     }
 
     public String getTitle() {
@@ -85,11 +85,11 @@ public class Post {
         this.date = date;
     }
 
-    public User getOwner() {
-        return owner;
+    public User getUser() {
+        return user;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

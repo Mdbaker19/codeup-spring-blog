@@ -28,6 +28,7 @@ a{
 .card{
     background-color: #52796f !important;
     color: #cad2c5 !important;
+    box-shadow: -7px 8px #233037 !important;
 }
 .card .card-image img{
     max-height: 335px !important;
@@ -35,6 +36,7 @@ a{
 }
 .homeCard{
     background-color: #52796f !important;
+    box-shadow: none !important;
 }
 .card-action{
     display: flex;
@@ -75,13 +77,12 @@ a{
     font-size: 20px !important;
 }
 .customInput{
-    padding: 10px !important;
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
     color: #cad2c5 !important;
 }
 .formHolder{
-    height: 100% !important;
+    height: 99% !important;
 }
 .textBody{
     height: 60%;
@@ -96,6 +97,9 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+.shadowedForm{
+    box-shadow: -7px 8px #233037;
 }
 #editContainer{
     background-color: #52796f !important;
