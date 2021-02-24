@@ -1,5 +1,29 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
+<head th:fragment="weatherMapHead">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Map</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/36f035c426.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/styles/weatherMap.css}">
+</head>
+
+
+
+
+
+
+
+
+
 
 <head th:fragment="styleHead">
     <meta charset="UTF-8">
@@ -24,6 +48,7 @@
                 <li><a href="/login">Login</a></li>
                 <li><a href="/postPage">See All posts</a></li>
                 <li><a href="/post/create">Create Post</a></li>
+                <li><a href="/personal/about">About Me</a></li>
             </ul>
         </div>
     </nav>
@@ -32,6 +57,7 @@
         <li><a href="/login">Login</a></li>
         <li><a href="/postPage">See All posts</a></li>
         <li><a href="/post/create">Create Post</a></li>
+        <li><a href="/personal/about">About Me</a></li>
     </ul>
 
     <div id="searchModal" class="modal">
@@ -164,4 +190,11 @@
             });
         });
     </script>
+</div>
+
+
+<div th:fragment="weatherMapScript" th:remove="tag">
+    <script th:src="@{/js/keys.js}"></script>
+    <script th:src="@{/js/jQ.js}"></script>
+    <script th:src="@{/js/weatherMap.js}"></script>
 </div>

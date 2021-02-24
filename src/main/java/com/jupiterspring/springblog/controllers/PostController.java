@@ -78,17 +78,18 @@ public class PostController {
         Post savedPost = postDao.save(post); // to use to then send an email or something
         model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
-        return "posts/show";
+        return "redirect:/postPage";
     }
 
     @GetMapping("/post/search")
     public String searchPost(@RequestParam Optional<String> searchValue, Model model, @PageableDefault(value = 5, sort = "title", direction = Sort.Direction.ASC) Pageable pageable){
+        // the search results do not display in sets of 5 right now
         List<Post> post = postDao.findAllByTitle(searchValue.orElse("" + searchValue));
         if(post.size() < 1){
             model.addAttribute("title", searchValue);
             return "notFound";
         }
-        Page<Post> postToPage = new PageImpl<>(post, pageable, 5);
+        Page<Post> postToPage = postDao.findByTitle(searchValue.orElse(""), pageable);
         model.addAttribute("page", postToPage);
         model.addAttribute("title", post.get(0).getTitle());
         return "posts/pages";
@@ -116,5 +117,7 @@ public class PostController {
         model.addAttribute("title", "Viewing Post Page " + (Integer.parseInt(String.valueOf(pageable.getPageNumber())) + 1));
         return "posts/pages";
     }
+
+
 
 }

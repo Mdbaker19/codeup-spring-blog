@@ -14,7 +14,7 @@
 
     <div class="section homeSection">
         <div class="row homeRow">
-            <div th:each="i : ${#numbers.sequence(0, 2)}" th:classappend="${i == 1 ? 'hide-on-small-only' : ''}" th:attr="class=${i == 2 ? 'card homeCard col s12 m6 l4 hide-on-med-and-down' : 'card homeCard col s12 m6 l4'}">
+            <div th:each="i : ${#numbers.sequence(0, 2)}" th:classappend="${i == 1 ? 'hide-on-small-only' : ''}" th:attr="class=${i == 2 ? 'card homeCard col s11 m5 l3 hide-on-med-and-down' : 'card homeCard col s11 m5 l3'}">
                 <th:block th:include="partials/partials.html :: homeCardTop"></th:block>
             </div>
         </div>
@@ -28,7 +28,7 @@
 
     <div class="section homeSection">
         <div class="row homeRow">
-            <div th:each="i : ${#numbers.sequence(3, 5)}" th:classappend="${i == 4 ? 'hide-on-small-only' : ''}" th:attr="class=${i == 5 ? 'card homeCard col s12 m6 l4 hide-on-med-and-down' : 'card homeCard col s12 m6 l4'}">
+            <div th:each="i : ${#numbers.sequence(3, 5)}" th:classappend="${i == 4 ? 'hide-on-small-only' : ''}" th:attr="class=${i == 5 ? 'card homeCard col s11 m5 l3 hide-on-med-and-down' : 'card homeCard col s11 m5 l3'}">
                 <th:block th:include="partials/partials.html :: homeCardTop"></th:block>
             </div>
 

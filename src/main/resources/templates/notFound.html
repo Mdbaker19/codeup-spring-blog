@@ -4,11 +4,12 @@
 <body>
 <header th:include="partials/partials.html :: header"></header>
 
-
     <main>
         <h1>No Post Found For : <span th:text="${title}"></span></h1>
         <a href="/" id="normalAnchor">Go To Home Page</a>
     </main>
+<footer th:include="partials/partials.html :: pageFooter"></footer>
+<div th:replace="partials/partials.html :: scripts"></div>
 </body>
 
 </html>

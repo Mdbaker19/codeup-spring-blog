@@ -26,6 +26,9 @@ a{
 a:hover {
     cursor: pointer;
 }
+.personalLinks{
+    color: aliceblue !important;
+}
 
 .homeRow{
     display: flex;

@@ -1,0 +1,450 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    color: #171f26;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+    margin: 10px 10px 0 0;
+    float: right;
+}
+.mapboxgl-canvas{
+    width: 100% !important;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+    height: 30px;
+    padding: 6px 35px;
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+    top: 4px;
+}
+
+button{
+    outline: none;
+    border: none;
+    background: none;
+    color: aliceblue;
+}
+#searchSubmit{
+    padding-top: 8px;
+}
+button:hover{
+    cursor: pointer;
+}
+#header{
+    width: 95vw;
+    margin: auto;
+    height: 18vh;
+    display: flex;
+    flex-direction: column;
+    opacity: .7;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+}
+.dark{
+    color: #4fb286;
+    background-color: #1e0f0f;
+}
+.light{
+    color: #1a221f;
+    background-color: #898686;
+}
+#time{
+    margin-top: .15rem;
+    margin-bottom: .15rem;
+    align-self: center;
+}
+#currentAddress{
+    margin-top: .15rem;
+    margin-bottom: .15rem;
+    align-self: center;
+    width: 80%;
+}
+#darkLight{
+    height: 25%;
+    font-size: 18px;
+    margin-bottom: .15rem;
+}
+.headerItem{
+    margin: .35rem;
+}
+#weatherArea{
+    width: 90vw;
+    height: 38vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.frontData{
+    font-size: 22px;
+}
+#weatherArea::-webkit-scrollbar-track{
+    background: #7b7272;
+}
+#weatherArea::-webkit-scrollbar{
+    width: .25em;
+}
+#weatherArea::-webkit-scrollbar-thumb{
+    background: #242222;
+}
+#map{
+    width: 95%;
+    height: 45%;
+    margin: auto;
+    opacity: .93;
+}
+#mapAndCurr{
+    display: flex;
+    height: 55vh;
+    flex-direction: column;
+}
+#currWeatherArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55%;
+}
+.weatherCard{
+    width: 80%;
+    height: 96%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    opacity: .7;
+    border-radius: 5px;
+    color: #4fb286;
+}
+.weatherCardCopy{
+    width: 95%;
+    height: 95%;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    opacity: .7;
+    border-radius: 5px;
+}
+#mainInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+#singleIcon{
+    width: 95px;
+}
+#dateInfo{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+#extraInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#singleCurrCard{
+    width: 95%;
+    color: white;
+    border: none;
+    background: none;
+    flex-direction: column;
+}
+#weatherData{
+    width: 100%;
+}
+.largeTemp{
+    font-size: 30px;
+}
+.large{
+    font-size: 20px;
+}
+.content{
+    font-size: 12px;
+}
+#singleWeatherCard{
+    width: 100%;
+    height: 98%;
+    font-size: 18px;
+}
+
+#todayDate{
+    width: 80%;
+    color: aliceblue;
+    outline: none;
+    background: none;
+    border: none;
+}
+
+.inputContainer{
+    width: 80%;
+    position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.inputContainer input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    padding-top: 32px;
+    outline: none;
+    color: white;
+}
+.inputContainer label{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+}
+.inputContainer label::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid #0956c1;
+    left: 0;
+    bottom: -1px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+.labelContent{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transition: all 0.3s ease;
+}
+.inputContainer input:focus + .labels .labelContent, .inputContainer input:valid + .labels .labelContent{
+    transform: translateY(-80%);
+    color: #658fce;
+}
+.inputContainer input:focus + .labels::after, .inputContainer input:valid + .labels::after{
+    transform: translateX(0%);
+}
+
+.flip-card {
+    width: 100%;
+    height: 215px;
+    perspective: 1000px;
+    box-shadow: -3px 2px 1px 0 rgba(0,0,0,0.1);
+    background-color: #1e0f0f;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.flip-card-front {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+.flip-card-back {
+    height: 100%;
+    width: 100%;
+    transform: rotateY(180deg);
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+.flip{
+    transform: rotateY(180deg);
+}
+#fullOnly3Hour{
+    display: none;
+}
+#threeHour{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
+.three{
+    width: 50%;
+}
+#threeHourTime{
+    border: 1px solid #1f1f1f;
+    border-radius: 15px;
+    width: 60px;
+    text-align: center;
+}
+#threeHourTemp{
+    font-size: 18px;
+}
+
+@media screen and (min-width: 768px){
+    .weatherCard{
+        width: 28%;
+    }
+    .flip-card{
+        height: 225px;
+    }
+    #mainInfo{
+        width: 55%;
+        align-items: baseline;
+    }
+    #dateInfo{
+        justify-content: space-evenly;
+        height: 10%;
+    }
+    .content{
+        font-size: 13px;
+    }
+    #weatherData{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        width: 100%;
+    }
+    #currWeatherArea{
+        flex-direction: row;
+        width: 50vw;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    #mapAndCurr{
+        height: 40vh;
+        flex-direction: row;
+    }
+    #currentAddress{
+        width: 20%;
+    }
+    #map{
+        width: 40vw;
+        height: 30vh;
+    }
+    #header{
+        flex-direction: row;
+        align-items: revert;
+        height: 7vh;
+    }
+    #singleCurrCard{
+        width: 90%;
+        color: white;
+        border: none;
+        background: none;
+    }
+    .largeTemp{
+        font-size: 30px;
+        align-self: flex-start;
+        margin-top: 13px;
+    }
+    .extra{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .large{
+        font-size: 15px;
+    }
+    .frontData{
+        font-size: 22px;
+    }
+    #singleIcon{
+        width: 75px;
+    }
+    #extraInfo{
+        width: 100%;
+        font-size: 13px;
+        height: 75%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #todayDate{
+        width: 22%;
+        margin: auto 0;
+    }
+    .headerItem{
+        margin: .76rem;
+    }
+    .inputContainer{
+        width: 30%;
+    }
+    #searchSubmit{
+        padding-top: 18px;
+    }
+    #weatherDisplay{
+        align-self: center;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .large{
+        font-size: 20px;
+    }
+    #extraInfo{
+        width: 70%;
+    }
+}
+@media screen and (min-width: 1399px) {
+    body{
+        font-size: 16px;
+    }
+    .weatherCard{
+        width: 12%;
+    }
+    .content{
+        font-size: 15px;
+    }
+    #mapAndCurr{
+        width: 95vw;
+    }
+    #weatherArea{
+        overflow: hidden;
+        justify-content: space-between;
+        width: 95vw;
+    }
+    #currWeatherArea{
+        width: 40%;
+    }
+    #map{
+        width: 40%;
+    }
+    #fullOnly3Hour{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 20%;
+        height: 100%;
+    }
+}

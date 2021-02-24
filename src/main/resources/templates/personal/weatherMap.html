@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/partials.html :: weatherMapHead"></head>
+<body>
+
+<div id="header" class="dark">
+    <div id="todayDate"></div>
+
+    <div class="inputContainer" id="nameInput">
+        <input id="search" autocomplete="off" required>
+        <label for="search" class="labels">
+            <span class="labelContent">Search</span>
+        </label>
+        <button id="searchSubmit"><i class="fas fa-search"></i></button>
+    </div>
+
+    <p id="time" class="headerItem"></p>
+
+    <p id="currentAddress" class="headerItem"></p>
+
+    <button id="hourChange">12HR</button>
+
+    <button id="darkLight" class="headerItem"><i class="fas fa-sun"></i></button>
+</div>
+<div id="mapAndCurr">
+
+    <div id="currWeatherArea">
+
+    </div>
+
+    <div id="fullOnly3Hour">
+
+    </div>
+
+    <div id="map">
+
+    </div>
+
+</div>
+<div id="weatherArea">
+
+</div>
+
+
+<div th:replace="partials/partials.html :: weatherMapScript"></div>
+
+</body>
+</html>
