@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="partials/partials.html :: styleHead"></head>
+<body>
+<header th:include="partials/partials.html :: header"></header>
+
+
+    <main>
+        <h1>No Post Found For : <span th:text="${title}"></span></h1>
+        <a href="/" id="normalAnchor">Go To Home Page</a>
+    </main>
+</body>
+
+</html>

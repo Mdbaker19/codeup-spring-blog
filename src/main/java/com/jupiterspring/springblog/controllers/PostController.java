@@ -4,6 +4,8 @@ import com.jupiterspring.springblog.model.User;
 import com.jupiterspring.springblog.repositories.PostRepository;
 import com.jupiterspring.springblog.repositories.UserRepository;
 import com.jupiterspring.springblog.util.Methods;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -79,11 +82,16 @@ public class PostController {
     }
 
     @GetMapping("/post/search")
-    public String searchPost(@RequestParam String searchValue, Model model){
-        Post post = postDao.findPostByTitle(searchValue);
-        model.addAttribute("post", post);
-        model.addAttribute("title", post.getTitle());
-        return "posts/show";
+    public String searchPost(@RequestParam Optional<String> searchValue, Model model, @PageableDefault(value = 5, sort = "title", direction = Sort.Direction.ASC) Pageable pageable){
+        List<Post> post = postDao.findAllByTitle(searchValue.orElse("" + searchValue));
+        if(post.size() < 1){
+            model.addAttribute("title", searchValue);
+            return "notFound";
+        }
+        Page<Post> postToPage = new PageImpl<>(post, pageable, 5);
+        model.addAttribute("page", postToPage);
+        model.addAttribute("title", post.get(0).getTitle());
+        return "posts/pages";
     }
 
     @GetMapping("/post/delete/{id}")

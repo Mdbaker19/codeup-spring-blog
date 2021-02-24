@@ -23,6 +23,9 @@ footer{
 a{
     color: #2f3e46 !important;
 }
+a:hover {
+    cursor: pointer;
+}
 
 .homeRow{
     display: flex;
