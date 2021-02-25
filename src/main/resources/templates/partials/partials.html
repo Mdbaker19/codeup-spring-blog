@@ -48,7 +48,16 @@
                 <li><a href="/login">Login</a></li>
                 <li><a href="/postPage">See All posts</a></li>
                 <li><a href="/post/create">Create Post</a></li>
-                <li><a href="/personal/about">About Me</a></li>
+                <li>
+                    <a class='dropdown-trigger' href='#' data-target='dropdown1'>Projects</a>
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="/personal/about">About Me</a></li>
+                        <li><a target="_blank" href="/weather">View The Weather Map</a></li>
+                        <li><a target="_blank" href="https://mdbaker19.github.io/MasterMind-project/">Master Mind</a></li>
+                        <li><a target="_blank" href="https://mdbaker19.github.io/Visual-Sorting-algo/sorting.html">Sorting Visualizer</a></li>
+                        <li><a target="_blank" href="https://mdbaker19.github.io/study-flash-cards/">Flash Card Study Site</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -58,6 +67,10 @@
         <li><a href="/postPage">See All posts</a></li>
         <li><a href="/post/create">Create Post</a></li>
         <li><a href="/personal/about">About Me</a></li>
+        <li><a target="_blank" href="/weather">View The Weather Map</a></li>
+        <li><a target="_blank" href="https://mdbaker19.github.io/MasterMind-project/">Master Mind</a></li>
+        <li><a target="_blank" href="https://mdbaker19.github.io/Visual-Sorting-algo/sorting.html">Sorting Visualizer</a></li>
+        <li><a target="_blank" href="https://mdbaker19.github.io/study-flash-cards/">Flash Card Study Site</a></li>
     </ul>
 
     <div id="searchModal" class="modal">
@@ -182,6 +195,7 @@
             $(".sidenav").sidenav();
             $(".parallax").parallax();
             $(".modal").modal();
+            $('.dropdown-trigger').dropdown();
             $("#revealForm").on("click", function (){
                $("#formGrow").css("height", "100vh");
             });

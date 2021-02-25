@@ -99,7 +99,6 @@ $(document).ready(function (){
                 $("#fullOnly3Hour").html(everyThreeHours(data.hourly));
                 displayOtherInfo(data, lng, lat);
                 cache = data;
-                console.log(data);
             });
         });
     }

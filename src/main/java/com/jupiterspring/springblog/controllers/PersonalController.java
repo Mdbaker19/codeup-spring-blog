@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class Personal {
+public class PersonalController {
 
     @GetMapping("/weather")
     public String weather(){
@@ -14,7 +14,7 @@ public class Personal {
 
     @GetMapping("/personal/about")
     public String aboutMe(Model model){
-        model.addAttribute("title", "Personal Links");
+        model.addAttribute("title", "Personal Site");
         return "personal/about";
     }
 
