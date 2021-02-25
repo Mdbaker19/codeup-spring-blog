@@ -3,6 +3,8 @@ import com.jupiterspring.springblog.model.Post;
 import com.jupiterspring.springblog.model.User;
 import com.jupiterspring.springblog.repositories.PostRepository;
 import com.jupiterspring.springblog.repositories.UserRepository;
+import com.jupiterspring.springblog.services.EmailService;
+import com.jupiterspring.springblog.services.UserService;
 import com.jupiterspring.springblog.util.Methods;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -22,12 +24,14 @@ import java.util.Optional;
 public class PostController {
 
     private final PostRepository postDao;
-    private final UserRepository userDao;
+    private final UserService userService;
+    private final EmailService emailService;
     Methods m = new Methods();
 
-    public PostController(PostRepository postDao, UserRepository userDao){
+    public PostController(PostRepository postDao, UserService userService, EmailService emailService){
         this.postDao = postDao;
-        this.userDao = userDao;
+        this.userService = userService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/")
@@ -54,7 +58,7 @@ public class PostController {
     @GetMapping("/post/{id}")
     public String getOne(@PathVariable long id, Model model){
         Post post = postDao.getOne(id);
-        User temp = userDao.getOne(1L);
+        User temp = userService.getOne(1L);
         post.setUser(temp);
         model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
@@ -71,11 +75,14 @@ public class PostController {
     // duplicate title entry causes error page unique constraint
     @PostMapping("/post/create")
     public String createPost(@ModelAttribute Post post, Model model){
-        User temp = userDao.getOne(1L);
+        User temp = userService.getOne(1L);
         post.setDate(new Date());
         post.setUser(temp);
         post.setAuthor(temp.getUsername()); // i believe i only need this for now while my posts are from made up users
         Post savedPost = postDao.save(post); // to use to then send an email or something
+        String subject = "Post Created";
+        String body = "Thank you for creating your post " + temp.getUsername() + " your ad id is " + savedPost.getId();
+        emailService.prepareAndSend(savedPost, subject, body);
         model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
         return "redirect:/postPage";
@@ -103,7 +110,8 @@ public class PostController {
 
     @PostMapping("/post/edit")
     public String editThePost(Model model, @ModelAttribute Post post){
-        User temp = userDao.getOne(1L);
+        User temp = userService.loggedInUser();
+//        User temp = userDao.getOne(1L);
         post.setUser(temp);
         post.setAuthor(temp.getUsername());
         post.setDate(new Date());

@@ -4,7 +4,7 @@ drop table if exists posts;
 drop table if exists users;
 show tables;
 
-insert into users(email, password, username) VALUES ('matt@matt.matt', 'matthew', 'matt');
+insert into users(email, password, username) VALUES ('matt@codeup.com', 'matthew', 'matt');
 
 insert into posts (user_id, author, title, body, date) values (1, 'Libbi', 'middleware', 'Speak vet kibbles heel chow chow stay english mastiff greyhound heel. Speak dog shih tzu vet stand leash, puppies leave it play dead pug yorkshire terrier pomsky. Stand greyhound catch boxer bite, down growl release english mastiff release speak dog toy dog house lab.
 Bite chase tail bell tennis ball dog bowl kibbles paw tug release. Leash tail vet pomsky leash rottweiler puppies, yorkshire terrier dog bone st bernard chow chow. Sit pretty puppies bring it heel collar vet chase tail sit pretty dog house.', '2013/11/5');
