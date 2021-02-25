@@ -1,5 +1,8 @@
 package com.jupiterspring.springblog.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,9 +22,11 @@ public class User {
     private String email;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @OneToMany(mappedBy = "user") // hibernate looks at the annotation and finds the value, more so it is the JPA annotation that does it
+    @JsonBackReference
     private List<Post> posts;
 
     public User(){}

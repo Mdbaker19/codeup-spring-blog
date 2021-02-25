@@ -4,6 +4,9 @@
     padding: 0;
     font-family: 'Newsreader', serif;
 }
+html{
+    font-size: 10px !important;
+}
 body{
     background-color: #2f3e46 !important;
 }
@@ -57,7 +60,9 @@ a:hover {
     justify-content: space-around;
 }
 
-
+.btn{
+    font-size: 12px !important;
+}
 .deleteButton{
     background: none !important;
     box-shadow: none !important;
@@ -194,4 +199,15 @@ a:hover {
     width: 55%;
     display: flex;
     justify-content: space-around;
+}
+
+
+
+@media screen and (min-width: 425px){
+    html{
+        font-size: 14px !important;
+    }
+    .btn{
+        font-size: 14px !important;
+    }
 }

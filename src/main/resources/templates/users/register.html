@@ -4,9 +4,14 @@
 
 <body>
 <header th:include="partials/partials.html :: header"></header>
-
+<main>
 
     <h1>Register page</h1>
 
+    <div th:replace="partials/partials.html :: registerForm"></div>
+
+</main>
+<footer th:include="partials/partials.html :: pageFooter"></footer>
+<div th:replace="partials/partials.html :: scripts"></div>
 </body>
 </html>

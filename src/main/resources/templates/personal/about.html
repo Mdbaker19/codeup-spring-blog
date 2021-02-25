@@ -1,11 +1,61 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="partials/partials.html :: styleHead"></head>
+<script src="https://kit.fontawesome.com/36f035c426.js" crossorigin="anonymous"></script>
 
 <body>
 <header th:include="partials/partials.html :: header"></header>
-<main>
-
+<main id="personalContainer">
+    <div id="mainPersonal">
+        <img th:src="@{/img/profile.jpg}" alt="Profile Picture" id="profileImage"/>
+        <blockquote>
+            It Ain’t What You Don’t Know That Gets You Into Trouble. It’s What You Know for Sure That Just Ain’t So<br>
+            <span id="quoteAuthor">-Mark Twain</span>
+        </blockquote>
+    </div>
+    <div id="mainPersonalDesc">
+        <ul class="collapsible">
+            <li class="active">
+                <div class="collapsible-header"><i class="material-icons">person_outline</i>About Me</div>
+                <div class="collapsible-body"><span>Solution driven, full-stack software developer looking to solve real world business problems with technical solutions. As a former repair technician, I have cultivated a passion for problem solving and collaborating with others to brainstorm unique solutions to any challenges in my path. Transitioning into software development has proven to be the best decision of my life as it has ignited the same level of passion for solving problems but in a new way.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">brightness_5</i>Comrade Snifter</div>
+                <div class="collapsible-body"><span>The <a target="_blank" class="projectLink" href="https://mdbaker19.github.io/MasterMind-project/">(No Link)Comrade Snifter</a> is a group project comparable to Craigslist, this full stack website allows users to sign up and share their favorite drinks. Visitors have the ability to view drinks and create an account. Registered users can view additional information while being able to add, rate, edit and delete drinks on the site. MySql was used to maintain the database of users and drinks. Built using JAVA, MYSQL and BootStrap</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">brightness_5</i>Weather Map</div>
+                <div class="collapsible-body"><span>The <a target="_blank" class="projectLink" href="/weather">Weather Map</a> is an application that allows the user to get a weekly forecast based on a searched position on the map. Built with HTML, CSS and JS while implementing the Mapbox and openweather API's.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">apps</i>Master Mind</div>
+                <div class="collapsible-body"><span><a target="_blank" class="projectLink" href="https://mdbaker19.github.io/MasterMind-project/">Master Mind</a> is a project based off of one of my favorite board game from the 70's. Using Html, CSS, JS and jQuery this is a
+                        recreation of this classic game with added features to change the difficulty by allowing the user to choose different amount of color choices to play from. While working on this project throughout my time at Codeup, I learned how to refactor old code and diagnose bugs to improve an old project. Built using HTML, CSS, JS and jQuery</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">arrow_forward</i>Sorting</div>
+                <div class="collapsible-body"><span><a target="_blank" class="projectLink" href="https://mdbaker19.github.io/Visual-Sorting-algo/sorting.html">Sorting Visualizer</a> is an application used to visualize the process of different sorting algorithms. Made using HTML canvas, a user can select from different algorithms and </span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">chrome_reader_mode</i>Flash Card Site</div>
+                <div class="collapsible-body"><span><a target="_blank" class="projectLink" href="https://mdbaker19.github.io/study-flash-cards/">Flash Cards</a> is an application that allows users to </span></div>
+            </li>
+        </ul>
+    </div>
+    <div id="chipArea">
+        <div class="chip">
+            <a href="https://github.com/Mdbaker19" target="_blank">
+                <i class="fab fa-github"></i>
+                GitHub
+            </a>
+        </div>
+        <div class="chip">
+            <a href="https://www.linkedin.com/in/matthew-baker-76b17b200/" target="_blank">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+            </a>
+        </div>
+    </div>
 </main>
 
 <footer th:include="partials/partials.html :: pageFooter"></footer>

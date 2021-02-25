@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#personalContainer{
+    width: 80%;
+    margin: auto;
+}
+#mainPersonal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10vh;
+}
+#profileImage{
+    max-width: 45vmin;
+    max-height: 45vmin;
+    border-radius: 15px;
+}
+blockquote{
+    color: #4fb286 !important;
+    border-left: 5px solid #84a98c !important;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#quoteAuthor{
+    margin-left: 3vmin;
+}
+#chipArea{
+    display: flex;
+    justify-content: space-around;
+}
+.collapsible-header{
+    background-color: #84a98b !important;
+    border-bottom: 1px solid #2f3f46 !important;
+}
+.collapsible-body{
+    background-color: #365954 !important;
+    color: #cabdab !important;
+}
+.chip{
+    background-color: #84a98c !important;
+}
+.projectLink{
+    color: #50b284 !important;
+    font-weight: bold;
+    text-decoration: underline;
+}

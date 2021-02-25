@@ -1,5 +1,7 @@
 package com.jupiterspring.springblog.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -25,6 +27,7 @@ public class Post {
     private Date date;
 
     @ManyToOne
+    @JsonManagedReference
     private User user; // should be user not owner just so naming conventions
 
     public Post(){}

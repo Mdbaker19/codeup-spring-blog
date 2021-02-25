@@ -1,5 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
+<!--********WEATHER MAP STYLE******** -->
+
 <head th:fragment="weatherMapHead">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -20,23 +22,30 @@
 
 
 
-
-
-
-
+<!--********MAIN STYLE******** -->
 
 <head th:fragment="styleHead">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/36f035c426.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/styles/global.css}">
+    <link rel="stylesheet" th:href="@{/styles/personal.css}">
     <title th:text="${title}"></title>
 </head>
+
+
+
+
+
+
+
+<!--********MAIN HEADER / NAV ******** -->
 
 <header th:fragment="header">
     <nav>
@@ -52,10 +61,6 @@
                     <a class='dropdown-trigger' href='#' data-target='dropdown1'>Projects</a>
                     <ul id='dropdown1' class='dropdown-content'>
                         <li><a href="/personal/about">About Me</a></li>
-                        <li><a target="_blank" href="/weather">View The Weather Map</a></li>
-                        <li><a target="_blank" href="https://mdbaker19.github.io/MasterMind-project/">Master Mind</a></li>
-                        <li><a target="_blank" href="https://mdbaker19.github.io/Visual-Sorting-algo/sorting.html">Sorting Visualizer</a></li>
-                        <li><a target="_blank" href="https://mdbaker19.github.io/study-flash-cards/">Flash Card Study Site</a></li>
                     </ul>
                 </li>
             </ul>
@@ -64,13 +69,12 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a class="waves-effect waves-light btn modal-trigger" id="searchButton2" href="#searchModal"><i class="material-icons">search</i></a></li>
         <li><a href="/login">Login</a></li>
+        <li class="divider" tabindex="-1"></li>
         <li><a href="/postPage">See All posts</a></li>
+        <li class="divider" tabindex="-1"></li>
         <li><a href="/post/create">Create Post</a></li>
+        <li class="divider" tabindex="-1"></li>
         <li><a href="/personal/about">About Me</a></li>
-        <li><a target="_blank" href="/weather">View The Weather Map</a></li>
-        <li><a target="_blank" href="https://mdbaker19.github.io/MasterMind-project/">Master Mind</a></li>
-        <li><a target="_blank" href="https://mdbaker19.github.io/Visual-Sorting-algo/sorting.html">Sorting Visualizer</a></li>
-        <li><a target="_blank" href="https://mdbaker19.github.io/study-flash-cards/">Flash Card Study Site</a></li>
     </ul>
 
     <div id="searchModal" class="modal">
@@ -114,6 +118,7 @@
 
 
 
+<!--********MODAL -- DELETE-- ******** -->
 
 <div th:fragment="deleteModal" th:remove="tag">
     <a class="waves-effect waves-light btn modal-trigger deleteButton" href="#modal1">Delete</a>
@@ -126,6 +131,9 @@
     </div>
 </div>
 
+
+
+<!--********MAIN FORM******** -->
 
     <form th:fragment="editAndCreateForm">
         <div class="input-field">
@@ -140,7 +148,61 @@
 
 
 
+<!--********LOGIN FORM******** -->
 
+<div th:fragment="logInForm" th:remove="tag">
+    <form>
+        <div class="input-field">
+            <p class="formLabelEdit">Username: <input type="text" class="validate customInput"></p>
+        </div>
+        <div class="input-field textBody">
+            <p class="formLabelEdit">Password: <input type="password" class="validate customInput editBody materialize-textarea"/></p>
+        </div>
+        <input type="hidden"/>
+        <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+<!--********REGISTER FORM******** -->
+
+
+<div th:fragment="registerForm" th:remove="tag">
+    <form>
+        <div class="input-field">
+            <p class="formLabelEdit">Username: <input type="text" class="validate customInput"></p>
+        </div>
+        <div class="input-field textBody">
+            <p class="formLabelEdit">Email: <input type="email" class="validate customInput editBody materialize-textarea"/></p>
+        </div>
+        <div class="input-field textBody">
+            <p class="formLabelEdit">Password: <input type="password" class="validate customInput editBody materialize-textarea"/></p>
+        </div>
+        <div class="input-field textBody">
+            <p class="formLabelEdit">Confirm Password: <input type="password" class="validate customInput editBody materialize-textarea"/></p>
+        </div>
+        <input type="hidden"/>
+        <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+        <!--********MAIN FOOTER******** -->
 <footer class="page-footer" id="foot" th:fragment="pageFooter">
     <div class="container">
         <div class="row">
@@ -162,39 +224,24 @@
     </div>
 </footer>
 
-<footer class="page-footer" th:fragment="diceFooter">
-    <div class="container">
-        <div class="row">
-            <div class="col l8 offset-l2 s12">
-                <h5 class="">Choose Guess</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="/roll-dice/1">1</a></li>
-                    <li><a class="grey-text text-lighten-3" href="/roll-dice/2">2</a></li>
-                    <li><a class="grey-text text-lighten-3" href="/roll-dice/3">3</a></li>
-                    <li><a class="grey-text text-lighten-3" href="/roll-dice/4">4</a></li>
-                    <li><a class="grey-text text-lighten-3" href="/roll-dice/5">5</a></li>
-                    <li><a class="grey-text text-lighten-3" href="/roll-dice/6">6</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
 
 
 
 
 
+
+<!--********MAIN SCRIPTS******** -->
 
 <div th:fragment="scripts" th:remove="tag">
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <script>
         $(document).ready(function (){
             $(".sidenav").sidenav();
             $(".parallax").parallax();
             $(".modal").modal();
+            $('.collapsible').collapsible();
             $('.dropdown-trigger').dropdown();
             $("#revealForm").on("click", function (){
                $("#formGrow").css("height", "100vh");
@@ -204,8 +251,11 @@
             });
         });
     </script>
+
 </div>
 
+
+<!--********WEATHER MAP SCRIPTS******** -->
 
 <div th:fragment="weatherMapScript" th:remove="tag">
     <script th:src="@{/js/keys.js}"></script>

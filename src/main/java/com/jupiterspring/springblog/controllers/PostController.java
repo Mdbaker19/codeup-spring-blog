@@ -126,6 +126,16 @@ public class PostController {
         return "posts/pages";
     }
 
+    @GetMapping("/post.json")
+    public @ResponseBody List<Post> viewAllPostsInJSONFormat(){
+        return postDao.findAll();
+    }
+    @GetMapping("/posts/ajax")
+    public String viewAllPostsWithAjax(Model model){
+        model.addAttribute("title", "Ajax Posts");
+        return "posts/ajax";
+    }
+
 
 
 }

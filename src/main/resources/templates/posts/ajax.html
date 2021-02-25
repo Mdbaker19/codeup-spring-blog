@@ -5,13 +5,14 @@
 <header th:include="partials/partials.html :: header"></header>
 
 <main>
-    <h1>Log in Page</h1>
+    <h1>Posts using AJAX!</h1>
+    <div id="ajaxPost">
 
-    <div th:replace="partials/partials.html :: logInForm"></div>
-
-    <a href="/register" id="normalAnchor">Register</a>
+    </div>
 </main>
+
 <footer th:include="partials/partials.html :: pageFooter"></footer>
 <div th:replace="partials/partials.html :: scripts"></div>
+<script th:src="@{/js/posts.js}"></script>
 </body>
 </html>
