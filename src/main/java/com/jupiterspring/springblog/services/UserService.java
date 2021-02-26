@@ -15,14 +15,12 @@ public class UserService {
     }
 
     public User loggedInUser(){
-        // still hard coded but extracted now
-//        return userDao.findAll().get(0);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        long userId = user.getId();
-        return userDao.findById(userId);
-    }
-
-    public User getOne(long l) {
-        return userDao.getOne(l);
+        if(user.getUsername() == null){
+            System.out.println("no currently logged in user");
+            return null;
+        }
+        System.out.println("Grabbing current user : " + user.getUsername());
+        return userDao.findById(user.getId()).get();
     }
 }

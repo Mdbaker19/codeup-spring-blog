@@ -18,11 +18,14 @@ public class UserDetailsLoader implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(userName);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("find a user with UN : " + username);
+        User user = userDao.findByUsername(username);
+        System.out.println("----before null check, is there a user? ----");
         if(user == null){
-            throw new UsernameNotFoundException("No user found with username " + userName);
+            throw new UsernameNotFoundException("No user found with username " + username);
         }
+        System.out.println(user.getUsername());
         return new UserWithRoles(user); // the enhanced UserDetails copy user
     }
 }

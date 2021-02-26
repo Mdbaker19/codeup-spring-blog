@@ -37,21 +37,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // what urls you can visit
         http.formLogin()
                 .loginPage("/login")//define the log in page ( spring security will handle post request to /login )
-                .defaultSuccessUrl("/") // define where you go after successful login
+                .defaultSuccessUrl("/homePage") // define where you go after successful login
                 .permitAll()//all people can visit the login page
-                .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout")//once logged out they are sent to login page (?logout => extra message to then use to show something on page)
 
                 .and()
-                .authorizeRequests()
-                .antMatchers("/", "/register", "/posts")// pages you do not need to be logged in to view to the permitAll below ( can specify get and posts to the urls as well )
-                .permitAll()
+                    .logout()
+                    .invalidateHttpSession(true)
+                    .logoutSuccessUrl("/homePage")//once logged out they are sent to login page (?logout => extra message to then use to show something on page)
+
+                .and()
+                    .authorizeRequests()
+                    .antMatchers("/", "/register", "/postPage")// pages you do not need to be logged in to view to the permitAll below ( can specify get and posts to the urls as well )
+                    .permitAll()
 
                 .and() // pages need to be logged in to visit below
-                .authorizeRequests()
-                .antMatchers("/post/*")//anything with post / something.. you need to be logged in to visit
-                .authenticated();
+                    .authorizeRequests()
+                    .antMatchers("/post/*")//anything with post / something.. you need to be logged in to visit
+                    .authenticated();
     }
 
 }

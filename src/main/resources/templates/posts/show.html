@@ -18,16 +18,24 @@
                     </div>
                     <div class="card-action">
                         <h4 class="left grey-text" th:text="${post.author}"></h4> <!--this will be the user name later-->
-                        <button th:replace="partials/partials.html :: deleteModal">Delete</button>
-                        <span class="activator" id="revealForm"><i class="material-icons">border_color</i></span>
-<!--                        <h6 th:text="${post.user.username}"></h6> &lt;!&ndash;This will be moved to the post author later&ndash;&gt;-->
+                        <a th:include="partials/partials.html :: deleteModal">Delete</a>
+                        <span th:if="${currId == post.user.id}" class="activator" id="revealForm"><i class="material-icons">border_color</i></span>
                         <h6 th:text="${post.user.email}"></h6>
                     </div>
                     <div class="card-reveal" id="editContainer">
                         <span class="card-title" id="closeForm"><i class="material-icons right">close</i></span>
 
                         <div id="formContainer">
-                            <form th:insert="partials/partials.html :: editAndCreateForm" id="editForm" th:action="@{/post/edit}" th:object="${post}" th:method="Post"></form>
+                            <form id="editForm" th:action="@{/post/edit}" th:object="${post}" th:method="Post">
+                                <div class="input-field">
+                                    <p class="formLabelEdit">Title: <input th:field="*{title}" type="text" class="validate customInput"></p>
+                                </div>
+                                <div class="input-field textBody">
+                                    <p class="formLabelEdit">Body: <textarea th:field="*{body}" type="text" class="validate customInput editBody materialize-textarea"></textarea></p>
+                                </div>
+                                <input type="hidden" th:field="*{id}"/>
+                                <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>

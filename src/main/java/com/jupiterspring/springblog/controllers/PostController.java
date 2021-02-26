@@ -26,7 +26,6 @@ public class PostController {
     private final PostRepository postDao;
     private final UserService userService;
     private final EmailService emailService;
-    Methods m = new Methods();
 
     public PostController(PostRepository postDao, UserService userService, EmailService emailService){
         this.postDao = postDao;
@@ -37,9 +36,18 @@ public class PostController {
 
     @GetMapping("/post/{id}")
     public String getOne(@PathVariable long id, Model model){
+        User currUser = new User();
+        if(userService.loggedInUser() == null){
+            currUser.setId(Integer.MAX_VALUE);
+        } else {
+            currUser = userService.loggedInUser();
+        }
+        System.out.println("Setting user id to : " + currUser.getId());
+        model.addAttribute("currId", currUser.getId());
+
+
         Post post = postDao.getOne(id);
-        User temp = userService.getOne(1L);
-        post.setUser(temp);
+        System.out.println("Post viewing user id is : " + post.getUser().getId());
         model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
         return "posts/show";
@@ -58,7 +66,9 @@ public class PostController {
         User temp = userService.loggedInUser();
         post.setDate(new Date());
         post.setUser(temp);
-        post.setAuthor(temp.getUsername()); // i believe i only need this for now while my posts are from made up users
+        post.setAuthor(temp.getUsername());
+
+
         Post savedPost = postDao.save(post); // to use to then send an email or something
         String subject = "Post Created";
         String body = "Thank you for creating your post " + temp.getUsername() + " your ad id is " + savedPost.getId();
@@ -91,7 +101,6 @@ public class PostController {
     @PostMapping("/post/edit")
     public String editThePost(Model model, @ModelAttribute Post post){
         User temp = userService.loggedInUser();
-//        User temp = userDao.getOne(1L);
         post.setUser(temp);
         post.setAuthor(temp.getUsername());
         post.setDate(new Date());

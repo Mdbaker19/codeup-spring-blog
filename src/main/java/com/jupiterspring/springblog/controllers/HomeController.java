@@ -20,7 +20,7 @@ public class HomeController {
         this.postDao = postDao;
     }
 
-    @GetMapping("/")
+    @GetMapping("/homePage")
     public String topPosts(Model model){
         List<Post> all = postDao.findAll();
         List<Post> featurePosts = new ArrayList<>();

@@ -12,7 +12,7 @@ public class PersonalController {
         return "personal/weatherMap";
     }
 
-    @GetMapping("/personal/about")
+    @GetMapping("/")
     public String aboutMe(Model model){
         model.addAttribute("title", "Personal Site");
         return "personal/about";
