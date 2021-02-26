@@ -29,6 +29,13 @@ public class User {
     @JsonBackReference
     private List<Post> posts;
 
+    public User(User copy){
+        this.id = copy.id;
+        this.username = copy.username;
+        this.password = copy.password;
+        this.email = copy.email;
+    }
+
     public User(){}
 
     public User(long id, String username, String email, String password){

@@ -34,26 +34,6 @@ public class PostController {
         this.emailService = emailService;
     }
 
-    @GetMapping("/")
-    public String topPosts(Model model){
-        List<Post> all = postDao.findAll();
-        List<Post> featurePosts = new ArrayList<>();
-        List<String> featurePostImages = new ArrayList<>();
-        featurePostImages.add("/img/grassPuppy.jpeg");
-        featurePostImages.add("/img/snowDog.jpeg");
-        featurePostImages.add("/img/puppy.jpg");
-        featurePostImages.add("/img/snowHusky.jpeg");
-        featurePostImages.add("/img/wildHusky.jpeg");
-        featurePostImages.add("/img/wildPuppy.jpeg");
-        for(int i = 0; i < 6; i++){
-            featurePosts.add(all.get(i));
-        }
-        model.addAttribute("featurePosts", featurePosts);
-        model.addAttribute("imgList", featurePostImages);
-        model.addAttribute("title", "Dog Blog");
-        return "home";
-    }
-
 
     @GetMapping("/post/{id}")
     public String getOne(@PathVariable long id, Model model){
@@ -75,7 +55,7 @@ public class PostController {
     // duplicate title entry causes error page unique constraint
     @PostMapping("/post/create")
     public String createPost(@ModelAttribute Post post, Model model){
-        User temp = userService.getOne(1L);
+        User temp = userService.loggedInUser();
         post.setDate(new Date());
         post.setUser(temp);
         post.setAuthor(temp.getUsername()); // i believe i only need this for now while my posts are from made up users

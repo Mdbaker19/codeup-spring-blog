@@ -54,13 +54,14 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="waves-effect waves-light btn modal-trigger center-align" id="searchButton" href="#searchModal"><i class="material-icons">search</i></a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/postPage">See All posts</a></li>
-                <li><a href="/post/create">Create Post</a></li>
+                <li><a href="/personal/about">About Me</a></li>
                 <li>
-                    <a class='dropdown-trigger' href='#' data-target='dropdown1'>Projects</a>
+                    <a class='dropdown-trigger' href='#' data-target='dropdown1'>Dog Blog</a>
                     <ul id='dropdown1' class='dropdown-content'>
-                        <li><a href="/personal/about">About Me</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/postPage">See All posts</a></li>
+                        <li><a href="/posts/ajax">See All posts (AJAX)</a></li>
+                        <li><a href="/post/create">Create Post</a></li>
                     </ul>
                 </li>
             </ul>
@@ -71,6 +72,8 @@
         <li><a href="/login">Login</a></li>
         <li class="divider" tabindex="-1"></li>
         <li><a href="/postPage">See All posts</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a href="/posts/ajax">See All posts (AJAX)</a></li>
         <li class="divider" tabindex="-1"></li>
         <li><a href="/post/create">Create Post</a></li>
         <li class="divider" tabindex="-1"></li>
@@ -175,18 +178,19 @@
 
 
 <div th:fragment="registerForm" th:remove="tag">
-    <form>
+    <form th:object="${user}" th:action="@{/register}" th:method="POST">
         <div class="input-field">
-            <p class="formLabelEdit">Username: <input type="text" class="validate customInput"></p>
+            <p class="formLabelEdit">Username: <input type="text" class="validate customInput" th:field="*{username}"></p>
         </div>
         <div class="input-field textBody">
-            <p class="formLabelEdit">Email: <input type="email" class="validate customInput editBody materialize-textarea"/></p>
+            <p class="formLabelEdit">Email: <input type="email" class="validate customInput editBody materialize-textarea" th:field="*{email}">/></p>
         </div>
         <div class="input-field textBody">
-            <p class="formLabelEdit">Password: <input type="password" class="validate customInput editBody materialize-textarea"/></p>
+            <p class="formLabelEdit">Password: <input type="password" class="validate customInput editBody materialize-textarea" th:field="*{password}">/></p>
         </div>
         <div class="input-field textBody">
-            <p class="formLabelEdit">Confirm Password: <input type="password" class="validate customInput editBody materialize-textarea"/></p>
+            <p th:if="${incorrectPassword}"><span>Passwords do not match</span></p>
+            <p class="formLabelEdit">Confirm Password: <input type="password" class="validate customInput editBody materialize-textarea" name="passwordMatch"/></p>
         </div>
         <input type="hidden"/>
         <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
