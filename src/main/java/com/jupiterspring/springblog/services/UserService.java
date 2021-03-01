@@ -4,6 +4,7 @@ import com.jupiterspring.springblog.model.User;
 import com.jupiterspring.springblog.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service("userService")
 public class UserService {

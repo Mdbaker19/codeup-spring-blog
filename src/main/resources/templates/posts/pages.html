@@ -10,6 +10,12 @@
         <div class="row">
             <div class="col s12" th:each="post : ${page}">
                 <div class="card darken-1 hoverable">
+                    <div th:if="${post.image != null}" class="card-image">
+                        <img th:src="${post.image}" alt="nothing">
+                    </div>
+                    <div th:if="${post.image == null}" class="card-image">
+                        <img th:src="@{/img/snow.jpg}" alt="nothing">
+                    </div>
                     <div class="card-content">
                         <p th:text="${post.date.toString().substring(0, 11)}" class="right"></p>
                         <span class="card-title center-align" th:text="${post.title}"></span>

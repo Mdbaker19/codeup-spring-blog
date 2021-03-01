@@ -4,8 +4,11 @@ import com.jupiterspring.springblog.model.User;
 import com.jupiterspring.springblog.repositories.PostRepository;
 import com.jupiterspring.springblog.repositories.UserRepository;
 import com.jupiterspring.springblog.services.EmailService;
+import com.jupiterspring.springblog.services.FileUploadService;
 import com.jupiterspring.springblog.services.UserService;
 import com.jupiterspring.springblog.util.Methods;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +17,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,11 +34,19 @@ public class PostController {
     private final UserService userService;
     private final EmailService emailService;
 
+    @Value("${file-upload-path}")
+    private String uploadPath;
+
+    @Autowired
+    FileUploadService fileUploadService;
+
     public PostController(PostRepository postDao, UserService userService, EmailService emailService){
         this.postDao = postDao;
         this.userService = userService;
         this.emailService = emailService;
     }
+
+
 
 
     @GetMapping("/post/{id}")
@@ -47,6 +62,9 @@ public class PostController {
 
 
         Post post = postDao.getOne(id);
+        System.out.println("==============");
+        System.out.println(post.getImage());
+        System.out.println("==============");
         System.out.println("Post viewing user id is : " + post.getUser().getId());
         model.addAttribute("post", post);
         model.addAttribute("title", post.getTitle());
@@ -62,9 +80,31 @@ public class PostController {
 
     // duplicate title entry causes error page unique constraint
     @PostMapping("/post/create")
-    public String createPost(@ModelAttribute Post post, Model model){
+    public String createPost(@ModelAttribute Post post, Model model, @RequestParam(name = "file") MultipartFile uploadedFile) throws IOException {
         User temp = userService.loggedInUser();
+        if(post.getTitle().isEmpty()){
+            System.out.println("no title");
+            return "redirect:/post/create";
+        } else if (post.getBody().isEmpty()) {
+            System.out.println("no body");
+            return "redirect:/post/create";
+        }
+
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile);
+            model.addAttribute("message", "File successfully uploaded!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Oops! Something went wrong! " + e);
+        }
+
+
         post.setDate(new Date());
+        post.setImage("/img/" + filename);
+        System.out.println(post.getImage());
         post.setUser(temp);
         post.setAuthor(temp.getUsername());
 
@@ -77,6 +117,7 @@ public class PostController {
         model.addAttribute("title", post.getTitle());
         return "redirect:/postPage";
     }
+
 
     @GetMapping("/post/search")
     public String searchPost(@RequestParam Optional<String> searchValue, Model model, @PageableDefault(value = 5, sort = "title", direction = Sort.Direction.ASC) Pageable pageable){
@@ -104,6 +145,7 @@ public class PostController {
         post.setUser(temp);
         post.setAuthor(temp.getUsername());
         post.setDate(new Date());
+        System.out.println(post.getImage());
         postDao.save(post);
         return getOne(post.getId(), model);
     }

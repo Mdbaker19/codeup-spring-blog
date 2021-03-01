@@ -1,6 +1,7 @@
 package com.jupiterspring.springblog.controllers;
 
 import com.jupiterspring.springblog.model.User;
+import com.jupiterspring.springblog.repositories.PostRepository;
 import com.jupiterspring.springblog.repositories.UserRepository;
 import com.jupiterspring.springblog.services.UserDetailsLoader;
 import com.jupiterspring.springblog.services.UserService;
@@ -17,14 +18,17 @@ public class UserController {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userDao;
+    private final PostRepository postDao;
     private final UserDetailsLoader userDetailsLoader;
     private final UserService userService;
 
-    public UserController(PasswordEncoder passwordEncoder, UserRepository userDao, UserDetailsLoader userDetailsLoader, UserService userService){
+    public UserController(PasswordEncoder passwordEncoder, UserRepository userDao, UserDetailsLoader userDetailsLoader, UserService userService, PostRepository postDao){
         this.passwordEncoder = passwordEncoder;
         this.userDao = userDao;
         this.userDetailsLoader = userDetailsLoader;
         this.userService = userService;
+        this.postDao = postDao;
+
     }
 
     @GetMapping("/login")
@@ -64,6 +68,9 @@ public class UserController {
 
     @GetMapping("/profile")
     public String profilePage(Model model){
+        User currUser = userService.loggedInUser();
+        model.addAttribute("user", currUser);
+        model.addAttribute("posts", postDao.findAllByUserId(currUser.getId()));
         return "users/profile";
     }
 

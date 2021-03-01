@@ -20,4 +20,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Page<Post> findAll(Pageable pageable);
 
+    @Query(nativeQuery = true, value = "select * from posts where user_id = ?")
+    List<Post> findAllByUserId(long id);
+
 }

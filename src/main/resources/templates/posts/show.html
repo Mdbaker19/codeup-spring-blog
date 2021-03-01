@@ -10,6 +10,12 @@
         <div class="row formHolder">
             <div class="col s12 formHolder">
                 <div class="card darken-1 formHolder">
+                    <div th:if="${post.image != null}" class="card-image">
+                        <img th:src="${post.image}" alt="nothing">
+                    </div>
+                    <div th:if="${post.image == null}" class="card-image">
+                        <img th:src="@{/img/snow.jpg}" alt="nothing">
+                    </div>
                     <div class="card-content">
                         <p th:text="${post.date.toString().substring(0, 11)}" class="right"></p>
                         <span class="card-title" th:text="${post.title}"></span>
@@ -34,6 +40,7 @@
                                     <p class="formLabelEdit">Body: <textarea th:field="*{body}" type="text" class="validate customInput editBody materialize-textarea"></textarea></p>
                                 </div>
                                 <input type="hidden" th:field="*{id}"/>
+                                <input type="hidden" th:field="*{image}"/>
                                 <button class="btn waves-effect waves-light" id="createFormButton">Submit</button>
                             </form>
                         </div>
