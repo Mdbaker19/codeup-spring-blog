@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout()
                     .invalidateHttpSession(true)
-                    .logoutSuccessUrl("/homePage")//once logged out they are sent to login page (?logout => extra message to then use to show something on page)
+                    .logoutSuccessUrl("/homePage")//once logged out they are sent to login page or wherever (?logout => extra message to then use to show something on page)
 
                 .and()
                     .authorizeRequests()
@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and() // pages need to be logged in to visit below
                     .authorizeRequests()
-                    .antMatchers("/post/*")//anything with post / something.. you need to be logged in to visit
+                    .antMatchers("/post/*", "/posts/*")//anything with post / something.. you need to be logged in to visit
                     .authenticated();
     }
 

@@ -3,6 +3,7 @@ package com.jupiterspring.springblog.controllers;
 import com.jupiterspring.springblog.model.User;
 import com.jupiterspring.springblog.repositories.UserRepository;
 import com.jupiterspring.springblog.services.UserDetailsLoader;
+import com.jupiterspring.springblog.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,15 +18,20 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userDao;
     private final UserDetailsLoader userDetailsLoader;
+    private final UserService userService;
 
-    public UserController(PasswordEncoder passwordEncoder, UserRepository userDao, UserDetailsLoader userDetailsLoader){
+    public UserController(PasswordEncoder passwordEncoder, UserRepository userDao, UserDetailsLoader userDetailsLoader, UserService userService){
         this.passwordEncoder = passwordEncoder;
         this.userDao = userDao;
         this.userDetailsLoader = userDetailsLoader;
+        this.userService = userService;
     }
 
     @GetMapping("/login")
     public String loginPage(Model model){
+//        if(userService.loggedInUser() != null){ if you try to go to / login you are redirected to your profile
+//            return "redirect:/profile";
+//        }
         model.addAttribute("title", "Log In Page");
         return "users/login";
     }
