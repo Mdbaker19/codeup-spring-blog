@@ -59,8 +59,15 @@
                     <a class='dropdown-trigger' href='#' data-target='dropdown1'>Dog Blog</a>
                     <ul id='dropdown1' class='dropdown-content'>
                         <li><a href="/homePage">Blog Home Page</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><form class="logoutForm" th:action="@{/logout}" method="POST"><button class="logoutFormButton">Logout</button></form></li>
+                        <li sec:authorize="isAnonymous()">
+                            <a href="/login">Login</a>
+                        </li>
+                        <li sec:authorize="isAuthenticated()">
+                            <form class="logoutForm" th:action="@{/logout}" method="POST">
+                                <button class="logoutFormButton">Logout</button>
+                            </form>
+                        </li>
+                        <li sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>
                         <li><a href="/postPage">See All posts</a></li>
                         <li><a href="/posts/ajax">See All posts (AJAX)</a></li>
                         <li><a href="/post/create">Create Post</a></li>
@@ -73,9 +80,16 @@
         <li><a class="waves-effect waves-light btn modal-trigger" id="searchButton2" href="#searchModal"><i class="material-icons">search</i></a></li>
         <li><a href="/homePage">Blog Home Page</a></li>
         <li class="divider" tabindex="-1"></li>
-        <li><a href="/login">Login</a></li>
-        <li class="divider" tabindex="-1"></li>
-        <li><form class="logoutForm" th:action="@{/logout}" method="POST"><button class="logoutFormButton">Logout</button></form></li>
+        <li sec:authorize="isAnonymous()">
+            <a href="/login">Login</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <form class="logoutForm" th:action="@{/logout}" method="POST">
+                <button class="logoutFormButton">Logout</button>
+            </form>
+        </li>
+        <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+        <li sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>
         <li class="divider" tabindex="-1"></li>
         <li><a href="/postPage">See All posts</a></li>
         <li class="divider" tabindex="-1"></li>

@@ -14,6 +14,13 @@ nav{
     background-color: #84a98c !important;
     color: #cad2c5 !important;
 }
+#conditionalLog{
+    padding: 14px 2px;
+}
+.conditionalLog{
+    padding: 0 32px;
+}
+
 main{
     min-height: 100vh;
     display: flex;

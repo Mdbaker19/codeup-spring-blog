@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -25,6 +26,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public SpringSecurityDialect springSecurityDialect(){
+        return new SpringSecurityDialect();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         // tell spring security about the user details service
@@ -37,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // what urls you can visit
         http.formLogin()
                 .loginPage("/login")//define the log in page ( spring security will handle post request to /login )
-                .defaultSuccessUrl("/homePage") // define where you go after successful login
+                .defaultSuccessUrl("/profile") // define where you go after successful login
                 .permitAll()//all people can visit the login page
 
                 .and()
@@ -52,7 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and() // pages need to be logged in to visit below
                     .authorizeRequests()
-                    .antMatchers("/post/*", "/posts/*")//anything with post / something.. you need to be logged in to visit
+                    .antMatchers("/post/*", "/posts/*", "/profile")//anything with post / something.. you need to be logged in to visit
                     .authenticated();
     }
 

@@ -26,6 +26,9 @@ public class Post {
     @Column(nullable = false)
     private Date date;
 
+    @Column
+    private String image;
+
     @ManyToOne
     @JsonManagedReference
     private User user; // should be user not owner just so naming conventions
@@ -40,12 +43,13 @@ public class Post {
         this.date = d;
         this.user = user;
     }
-    public Post(String a, String t, String b, Date d, User user){
+    public Post(String a, String t, String b, Date d, User user, String image){
         this.author = a;
         this.title = t;
         this.body = b;
         this.date = d;
         this.user = user;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -94,5 +98,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
